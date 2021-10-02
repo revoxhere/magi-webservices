@@ -5,7 +5,7 @@ html {
 }
 
 #txinfo {
-	word-break: break-all;
+    word-break: break-all;
 }
 
 body {
@@ -17,7 +17,9 @@ body {
         background-color: #0d1423F2;
     }
 
-    .navbar, #loader-wrapper, .footer {
+    .navbar,
+    #loader-wrapper,
+    .footer {
         background-color: #0d1423;
     }
 
@@ -26,12 +28,12 @@ body {
     }
 
     .img-load {
-    	height: 150px;
-        content: url("../images/magi2021_logo_light.png");
+        height: 150px;
+        content: url("../images/magi2021_light.png");
     }
 
     #logo {
-    	content: url("../images/magi2021banner_dark.png");
+        content: url("../images/magi2021banner_dark.png");
     }
 }
 
@@ -40,7 +42,9 @@ body {
         background-color: #e0f5ff;
     }
 
-    .navbar, #loader-wrapper, .footer {
+    .navbar,
+    #loader-wrapper,
+    .footer {
         background-color: #6ac2ee;
     }
 
@@ -49,13 +53,22 @@ body {
     }
 
     .img-load {
-    	height: 150px;
+        height: 150px;
         content: url("../images/magi2021_dark.png");
     }
 
     #logo {
-    	content: url("../images/magi2021banner_light.png");
+        content: url("../images/magi2021banner_light.png");
     }
+}
+
+.notification {
+    display: none;
+    margin: 0;
+    position: fixed;
+    width: 30em;
+    bottom: 0;
+    right: 0.5em;
 }
 
 #loader-wrapper {

@@ -51,6 +51,7 @@ function fill_stats() {
     fetch(`${api}/statistics`)
         .catch(function(error) {
             console.log(error);
+            document.getElementById("notification").style.display = "block";
         })
         .then(response => response.json())
         .then(data => {
@@ -58,8 +59,8 @@ function fill_stats() {
             if (data.success === true) {
                 update_element("hashrate", scientific_prefix("H/s", data.result.hashrate));
 
-                update_element("diff_pos", round_to(4, data.result.difficulty.pos));
-                update_element("diff_pow", round_to(4, data.result.difficulty.pow));
+                update_element("diff_pos", round_to(3, data.result.difficulty.pos));
+                update_element("diff_pow", round_to(3, data.result.difficulty.pow));
 
                 update_element("reward", `<b>${round_to(2, data.result.reward)} XMG</b>`);
 
@@ -137,6 +138,13 @@ function btnsearch() {
 }
 
 window.addEventListener('load', function() {
+    (document.querySelectorAll('.notification .delete') || []).forEach(($delete) => {
+        const $notification = $delete.parentNode;
+
+        $delete.addEventListener('click', () => {
+            $notification.parentNode.removeChild($notification);
+        });
+    });
     window.setTimeout(function() {
         $("#loader-wrapper").fadeOut('slow');
         fill_stats();
