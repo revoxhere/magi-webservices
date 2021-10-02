@@ -1,0 +1,84 @@
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa&display=swap');
+
+html {
+    zoom: 125%;
+}
+
+#txinfo {
+	word-break: break-all;
+}
+
+body {
+    font-family: 'Comfortaa', Tahoma, Sans-Serif;
+}
+
+@media (prefers-color-scheme: dark) {
+    html {
+        background-color: #0d1423F2;
+    }
+
+    .navbar, #loader-wrapper, .footer {
+        background-color: #0d1423;
+    }
+
+    .input {
+        background-color: #6ac2ee37;
+    }
+
+    .img-load {
+    	height: 150px;
+        content: url("images/magi2021_logo_light.png");
+    }
+
+    #logo {
+    	content: url("images/magi2021banner_dark.png");
+    }
+}
+
+@media (prefers-color-scheme: light) {
+    html {
+        background-color: #e0f5ff;
+    }
+
+    .navbar, #loader-wrapper, .footer {
+        background-color: #6ac2ee;
+    }
+
+    .input {
+        background-color: #6ac2ee37;
+    }
+
+    .img-load {
+    	height: 150px;
+        content: url("images/magi2021_dark.png");
+    }
+
+    #logo {
+    	content: url("images/magi2021banner_light.png");
+    }
+}
+
+#loader-wrapper {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+}
+
+#loader-wrapper {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 777;
+}
+
+.load {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
