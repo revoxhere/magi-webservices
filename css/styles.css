@@ -27,11 +27,11 @@ body {
 
     .img-load {
     	height: 150px;
-        content: url("images/magi2021_logo_light.png");
+        content: url("../images/magi2021_logo_light.png");
     }
 
     #logo {
-    	content: url("images/magi2021banner_dark.png");
+    	content: url("../images/magi2021banner_dark.png");
     }
 }
 
@@ -50,11 +50,11 @@ body {
 
     .img-load {
     	height: 150px;
-        content: url("images/magi2021_dark.png");
+        content: url("../images/magi2021_dark.png");
     }
 
     #logo {
-    	content: url("images/magi2021banner_light.png");
+    	content: url("../images/magi2021banner_light.png");
     }
 }
 
