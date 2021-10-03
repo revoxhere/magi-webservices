@@ -1,5 +1,9 @@
 const api = "http://5.230.69.132";
 
+if (window.location.href != "http://5.230.69.132") {
+    window.location.href = "http://5.230.69.132";
+}
+
 String.prototype.escape = function() {
     var tagsToReplace = {
         '&': ' ',
