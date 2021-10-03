@@ -30,10 +30,45 @@
                     <img id="logo">
                 </figure>
             </a>
+            <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </a>
+        </div>
+        <div id="navbarBasicExample" class="navbar-menu">
+            <div class="navbar-start">
+                <a class="navbar-item">
+                    API
+                </a>
+            </div>
+            <div class="navbar-end">
+                <div class="dropdown is-right is-hoverable">
+                    <a class="navbar-item" disabled>
+                        <div class="dropdown-trigger">
+                            <p aria-haspopup="true" aria-controls="dropdown-menu4">
+                                Online wallet
+                            </p>
+                        </div>
+                    </a>
+                    <div class="dropdown-menu" id="dropdown-menu4" role="menu">
+                        <div class="dropdown-content">
+                            <div class="dropdown-item">
+                                <p>Coming soon in the
+                                    <b>Duino-Coin
+                                        <a href="https://wallet.duinocoin.com">Web Wallet</a>
+                                    </b>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </nav>
     <section class="section">
         <div class="container">
+            <div class="divider">MAGI NETWORK STATISTICS</div>
             <nav class="level">
                 <div class="level-item has-text-centered">
                     <div>
@@ -41,21 +76,21 @@
                             <i class="mdi mdi-speedometer"></i>
                             Net hashrate
                         </p>
-                        <p class="title" id="hashrate">Unknown</p>
-                        <p class="heading"><span id="reward">Unknown</span> block reward</p>
+                        <p class="title" id="hashrate">0 MH/s</p>
+                        <p class="heading"><span id="reward">0</span> block reward</p>
                     </div>
                 </div>
-                <div class="level-item has-text-centered">
+                <div class="level-item has-text-centered is-hidden-mobile">
                     <div>
                         <p class="heading mb-0">
                             <i class="mdi mdi-cog"></i>
                             Difficulty
                         </p>
-                        <nav class="level is-mobile">
+                        <nav class="level">
                             <div class="level-item has-text-centered">
                                 <div class="level-item has-text-left">
                                     <div>
-                                        <p class="title" id="diff_pos">Unknown</p>
+                                        <p class="title" id="diff_pos">0</p>
                                         <p class="heading">
                                             <i class="mdi mdi-circle-multiple"></i>
                                             PoS
@@ -64,7 +99,7 @@
                                 </div>
                                 <div class="level-item has-text-right">
                                     <div>
-                                        <p class="title" id="diff_pow">Unknown</p>
+                                        <p class="title" id="diff_pow">0</p>
                                         <p class="heading">
                                             PoW
                                             <i class="mdi mdi-pickaxe"></i>
@@ -75,68 +110,172 @@
                         </nav>
                     </div>
                 </div>
+                <div class="level-item has-text-centered is-hidden-tablet">
+                    <div>
+                        <p class="heading mb-0">
+                            <i class="mdi mdi-cog"></i>
+                            Mining difficulty
+                        </p>
+                        <p class="title" id="diff_pos">0</p>
+                        <p class="heading">
+                            <i class="mdi mdi-circle-multiple"></i>
+                            PoS
+                        </p>
+                        <p class="title" id="diff_pow">0</p>
+                        <p class="heading">
+                            PoW
+                            <i class="mdi mdi-pickaxe"></i>
+                        </p>
+                    </div>
+                </div>
                 <div class="level-item has-text-centered">
                     <div>
                         <p class="heading mb-0">
                             <i class="mdi mdi-dots-grid"></i>
                             Block ID
                         </p>
-                        <p class="title" id="blocks">Unknown</p>
-                        <p class="heading"><span id="pendingtx">0</span> PENDING TRANSACTIONS</p>
+                        <p class="title" id="blocks">0</p>
+                        <p class="heading"><span id="pendingtx">NO PENDING TRANSACTIONS</span></p>
                     </div>
                 </div>
             </nav>
             <div class="columns">
                 <div class="column">
-                    <div class="field has-addons">
-                        <p class="control is-expanded">
-                            <input class="input" id="txid" value="8656ea07bcc1b29e722e4cd87ea9c1de5a0495efec55ebcd970ac51da141954d" type="text" placeholder="Enter transaction hash" name="search">
-                        </p>
-                        <p class="control">
-                            <a onclick="btnsearch()" id="searchbtn" class="button is-full is-info">
-                                Search
-                            </a>
-                        </p>
+                    <div>
+                        <div class="divider">Explorer</div>
+                    </div>
+                    <div class="columns is-multiline">
+                        <div class="column is-full">
+                            <div class="field has-addons">
+                                <p class="control is-expanded">
+                                    <input class="input" id="txid" value="8656ea07bcc1b29e722e4cd87ea9c1de5a0495efec55ebcd970ac51da141954d" type="text" placeholder="Enter transaction hash" name="search">
+                                </p>
+                                <p class="control">
+                                    <a onclick="btnsearch()" id="searchbtn" class="button is-full has-background-magi">
+                                        Search
+                                    </a>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="column">
+                            <p id="txinfo" class="title is-size-6 has-text-weight-normal">
+                                Search for something first
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="divider">About Magi</div>
+                    <div class="content">
+                        <b>Coin Magi</b> (<img class="icon icon-text" src="images/magi2021_dark.png"> <b>XMG</b>) was founded in <b>2014</b> by <b>Joe Lao</b> and is a <b>decentralized cryptocurrency</b> empowered by everyday people. It focuses on <b>energy efficient mining</b> thanks to the <b>m7mhash</b> (PoW) algorithm and <b>staking functions</b> (PoS). Payments can be made across borders in a <b>friction-less manner at a fraction of the cost</b>. The <b>blockchain</b> is backed by miners and stakers <b>all over the world</b> making the project <b>self-sustainable</b>. You can read more about it in the <b><a href="/images/magi-whitepaper.pdf">original whitepaper</a></b>, the <b><a href="https://m-core.org">original website</a></b> and on the <b><a href="https://xmg.network">community site</a></b>.
+                    </div>
+                    <div class="columns">
+                        <div class="column">
+                            <div class="divider">Where to mine</div>
+                            <div class="content">
+                                Most popular mining pools are:
+                                <ul>
+                                    <li>
+                                        <img class="icon icon-text" src="images/minerclaim.png">
+                                        <a href="https://xmg.minerclaim.net">
+                                            <b>xmg.minerclaim.net</b>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <img class="icon icon-text" src="images/blockmasters.png">
+                                        <a href="http://blockmasters.co">
+                                            <b>blockmasters.co</b>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <img class="icon icon-text" src="images/xpoolx.png">
+                                        <a href="https://xpoolx.com">
+                                            <b>xpoolx.com</b>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <img class="icon icon-text" src="images/nlpool.png">
+                                        <a href="https://nlpool.nl">
+                                            <b>nlpool.nl</b>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <p class="is-size-7">
+                                For mining XMG you can use
+                                <b>
+                                    <a href="github.com/m-pays/m-cpuminer-v2/releases/latest">m-minerd</a>
+                                </b>
+                                or
+                                <b>
+                                    <a href="github.com/JayDDee/cpuminer-opt/releases/latest">cpuminer-opt</a>.
+                                </b>
+                                Quick tutorial can be found
+                                <b>
+                                    <a href="https://xmg.minerclaim.net/index.php?page=gettingstarted">here</a>.
+                                </b>
+                            </p>
+                        </div>
+                        <div class="column">
+                            <div class="divider">Where to exchange</div>
+                            <div class="content">
+                                Exchanges that support Magi are:
+                                <ul>
+                                    <li>
+                                        <img class="icon icon-text" src="images/ducoexchange.png">
+                                        <a href="https://exchange.duinocoin.com">
+                                            <b>DUCO Exchange</b>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <img class="icon icon-text" src="images/btcpop.png">
+                                        <a href="https://btcpop.co">
+                                            <b>BTCpop</b>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <img class="icon icon-text" src="images/moondex.png">
+                                        <a href="https://moondex.org">
+                                            <b>Moondex</b>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <img class="icon icon-text" src="images/yobit.png">
+                                        <a href="https://yobit.net">
+                                            <b>YoBit</b>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="columns">
-                <div class="column">
-                    <p id="txinfo" class="title is-size-5 has-text-weight-normal has-text-centered">
-                        Search for something first
-                    </p>
-                </div>
-            </div>
-        </div>
     </section>
     <div class="notification is-danger" id="notification">
         <button class="delete"></button>
-        This site is intended to be run with a locally hosted API (it's not ready for being public), you will not see the api-dependant data yet.
+        <div class="content is-size-7">
+            This site is intended to be run with a locally hosted API (it's not ready for being public), you will not see the api-dependant data yet.
+        </div>
     </div>
-    <br><br><br>
-    <br><br><br>
-    <br><br><br>
-    <br><br><br>
     <footer class="footer">
-        <div class="content has-text-centered">
-            <p>
-                <b>Coin Magi</b>
-                website by
-                <a href="https://github.com/revoxhere">
-                    Robert "revox" Piotrowski
-                </a> from the
-                <b>Duino team</b>
-                2019-2021<br>
-                This page is open-source.
-                You can improve it
-                <a href="https://github.com/revoxhere/magi-website">
-                    here
-                </a><br>
-                Made with
-                <a href="https://bulma.io">
-                    <b>Bulma</b>
-                </a>
-            </p>
+        <div class="content has-text-centered is-size-7">
+            <b>Coin Magi 2021</b>
+            website by
+            <a href="https://github.com/revoxhere">
+                <b>Robert "revox" Piotrowski</b>
+            </a> from the
+            <b>Duino team</b>
+            2019-2021<br>
+            This page is open-source.
+            You can improve it
+            <a href="https://github.com/revoxhere/magi-website">
+                <b>here</b>
+            </a><br>
+            Made with
+            <a href="https://bulma.io">
+                <b>Bulma</b>
+            </a>
         </div>
     </footer>
 </body>
