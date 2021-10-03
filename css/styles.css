@@ -1,15 +1,20 @@
 @import url('https://fonts.googleapis.com/css2?family=Comfortaa&display=swap');
-
-html {
-    zoom: 125%;
-}
-
-#txinfo {
-    word-break: break-all;
-}
+@import url('https://cdn.jsdelivr.net/npm/@creativebulma/bulma-divider@1.1.0/dist/bulma-divider.min.css');
 
 body {
-    font-family: 'Comfortaa', Tahoma, Sans-Serif;
+    font-family: 'Comfortaa', Sans-Serif;
+}
+
+.button,
+.input {
+    border-radius: 25px;
+    transition: 0.2s;
+}
+
+@media (min-width: 666px) {
+    html {
+        zoom: 125%;
+    }
 }
 
 @media (prefers-color-scheme: dark) {
@@ -19,8 +24,14 @@ body {
 
     .navbar,
     #loader-wrapper,
-    .footer {
+    .footer,
+    .has-background-magi {
         background-color: #0d1423;
+    }
+
+    .box {
+        background-color: #6ac2ee25;
+        box-shadow: 0 0 5px #00000066 !important;
     }
 
     .input {
@@ -42,9 +53,19 @@ body {
         background-color: #e0f5ff;
     }
 
+    p,
+    span {
+        color: hsl(0, 0%, 7%);
+    }
+
+    .box {
+        background-color: #6ac2ee27;
+    }
+
     .navbar,
     #loader-wrapper,
-    .footer {
+    .footer,
+    .has-background-magi {
         background-color: #6ac2ee;
     }
 
@@ -66,18 +87,12 @@ body {
     display: none;
     margin: 0;
     position: fixed;
-    width: 30em;
+    max-width: 30em;
     bottom: 0;
-    right: 0.5em;
-}
-
-#loader-wrapper {
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    left: 0;
     right: 0;
-    z-index: 1000;
+    margin-bottom: 0.5em;
+    margin-right: 0.5em;
+    margin-left: 0.5em;
 }
 
 #loader-wrapper {
