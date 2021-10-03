@@ -51,22 +51,28 @@ function fill_stats() {
     fetch(`${api}/statistics`)
         .catch(function(error) {
             console.log(error);
-            document.getElementById("notification").style.display = "block";
+            $("#notification").fadeIn('slow');
         })
         .then(response => response.json())
         .then(data => {
             console.log(data.result)
-            if (data.success === true) {
+            if (data.success) {
                 update_element("hashrate", scientific_prefix("H/s", data.result.hashrate));
 
-                update_element("diff_pos", round_to(3, data.result.difficulty.pos));
+                update_element("diff_pos", round_to(4, data.result.difficulty.pos));
                 update_element("diff_pow", round_to(3, data.result.difficulty.pow));
 
                 update_element("reward", `<b>${round_to(2, data.result.reward)} XMG</b>`);
 
                 update_element("blocks", data.result.blocks);
 
-                update_element("pendingtx", `<b>${data.result.blocktx}</b>`);
+                if (data.result.blocktx === 0) {
+                    update_element("pendingtx", `NO PENDING TRANSACTIONS`);
+                } else if (data.result.blocktx === 1) {
+                    update_element("pendingtx", `<b>${data.result.blocktx}</b> PENDING TRANSACTION`);
+                } else {
+                    update_element("pendingtx", `<b>${data.result.blocktx}</b> PENDING TRANSACTIONS`);
+                }
             }
         })
 }
@@ -79,6 +85,8 @@ function btnsearch() {
     fetch(`${api}/transactions/${to_search}`)
         .catch(function(error) {
             console.log(error);
+            update_element("txinfo", `Error getting transaction info: <b>${error}</b>
+                                      <br>Try again later`);
         })
         .then(response => response.json())
         .then(data => {
@@ -91,35 +99,35 @@ function btnsearch() {
                 res = `
                 <div class="columns is-multiline">
                     <div class="column">
-                        <p class="title is-size-5 has-text-centered">
+                        <p class="title is-size-6">
                             <span class="has-text-weight-normal">
                                 Transaction
                             </span>
                             <b>${to_search}</b>
                         </p>
-                        <div class="columns is-multiline is-gapless has-text-left">
-                            <div class="column is-full">
+                        <div class="columns is-size-6 is-multiline is-gapless has-text-left">
+                            <div class="column is-full mt-1">
                                 <i class="mdi mdi-numeric-${last_num}-circle"></i>
                                 <span>Amount: <b>${data.result.amount} ${data.result.currency}</b>
                                 (<b>${fee}</b> fee)</span>
                             </div>
-                            <div class="column is-full">
+                            <div class="column is-full mt-1">
                                 <i class="mdi mdi-account-arrow-right"></i>
                                 <span>Sender: <b>${data.result.sender}</b></span>
                             </div>
-                            <div class="column is-full">
+                            <div class="column is-full mt-1">
                                 <i class="mdi mdi-account-arrow-left"></i>
                                 <span>Recipient: <b>${data.result.recipient}</b></span>
                             </div>
-                            <div class="column is-full">
+                            <div class="column is-full mt-1">
                                 <i class="mdi mdi-message"></i>
                                 <span>Memo: <b>${data.result.memo}</b></span>
                             </div>
-                            <div class="column is-full">
+                            <div class="column is-full mt-1">
                                 <i class="mdi mdi-clock"></i>
                                 <span>Timestamp: <b>${data.result.datetime}</b></span>
                             </div>
-                            <div class="column is-full">
+                            <div class="column is-full mt-1">
                                 <i class="mdi mdi-dots-grid"></i>
                                 <span>Block: <b>${data.result.block}</b></span>
                             </div>
@@ -140,14 +148,27 @@ function btnsearch() {
 window.addEventListener('load', function() {
     (document.querySelectorAll('.notification .delete') || []).forEach(($delete) => {
         const $notification = $delete.parentNode;
-
         $delete.addEventListener('click', () => {
-            $notification.parentNode.removeChild($notification);
+            $($notification).fadeOut('slow');
         });
     });
+
+    const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+    $navbarBurgers.forEach(el => {
+        el.addEventListener('click', () => {
+            const target = el.dataset.target;
+            const $target = document.getElementById(target);
+            el.classList.toggle('is-active');
+            $target.classList.toggle('is-active');
+        });
+    });
+
+    fill_stats();
+    window.setInterval(function() {
+        fill_stats()
+    }, 7.5 * 1000);
+
     window.setTimeout(function() {
         $("#loader-wrapper").fadeOut('slow');
-        fill_stats();
-        window.setInterval(function() { fill_stats() }, 7.5 * 1000);
-    }, 100);
+    }, 200);
 });
