@@ -38,9 +38,24 @@
         </div>
         <div id="navbarBasicExample" class="navbar-menu">
             <div class="navbar-start">
-                <a class="navbar-item">
-                    API
-                </a>
+                <div class="dropdown is-left is-hoverable">
+                    <a class="navbar-item" disabled>
+                        <div class="dropdown-trigger">
+                            <p aria-haspopup="true" aria-controls="dropdown-menu4">
+                                API
+                            </p>
+                        </div>
+                    </a>
+                    <div class="dropdown-menu" id="dropdown-menu4" role="menu">
+                        <div class="dropdown-content">
+                            <div class="dropdown-item">
+                                <p>
+                                    Docs coming soon
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="navbar-end">
                 <div class="dropdown is-right is-hoverable">
@@ -90,7 +105,7 @@
                             <div class="level-item has-text-centered">
                                 <div class="level-item has-text-left">
                                     <div>
-                                        <p class="title" id="diff_pos">0</p>
+                                        <p class="title mr-1" id="diff_pos">0</p>
                                         <p class="heading">
                                             <i class="mdi mdi-circle-multiple"></i>
                                             PoS
@@ -99,7 +114,7 @@
                                 </div>
                                 <div class="level-item has-text-right">
                                     <div>
-                                        <p class="title" id="diff_pow">0</p>
+                                        <p class="title ml-1" id="diff_pow">0</p>
                                         <p class="heading">
                                             PoW
                                             <i class="mdi mdi-pickaxe"></i>
@@ -204,11 +219,11 @@
                             <p class="is-size-7">
                                 For mining XMG you can use
                                 <b>
-                                    <a href="github.com/m-pays/m-cpuminer-v2/releases/latest">m-minerd</a>
+                                    <a href="https://github.com/m-pays/m-cpuminer-v2/releases/latest">m-minerd</a>
                                 </b>
                                 or
                                 <b>
-                                    <a href="github.com/JayDDee/cpuminer-opt/releases/latest">cpuminer-opt</a>.
+                                    <a href="https://github.com/JayDDee/cpuminer-opt/releases/latest">cpuminer-opt</a>.
                                 </b>
                                 Quick tutorial can be found
                                 <b>
