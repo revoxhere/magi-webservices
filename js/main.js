@@ -1,5 +1,5 @@
 const api = "https://magi.duinocoin.com";
-//if (!window.location.href.includes("magi.duinocoin.com")) window.location.href = "https://magi.duinocoin.com/";
+if (!window.location.href.includes("magi.duinocoin.com")) window.location.href = "https://magi.duinocoin.com/";
 
 String.prototype.escape = function() {
     var tagsToReplace = {
