@@ -2,6 +2,11 @@ let username, password, address, captcha, captchainfo, email, passwordConfirm;
 const api = "https://magi.duinocoin.com";
 if (!window.location.href.includes("magi.duinocoin.com")) window.location.href = "https://magi.duinocoin.com/";
 
+let adBlockEnabled = false;
+const googleAdUrl = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js';
+try {fetch(new Request(googleAdUrl)).catch(_ => adBlockEnabled = true)}
+catch (e) {adBlockEnabled = true}
+
 String.prototype.escape = function() {
     var tagsToReplace = {
         '&': ' ',
@@ -161,7 +166,11 @@ function login(username, password) {
                     $("#balancediv").fadeIn(function() {
                         $("#pricesdiv").fadeIn(function() {
                             $("#transactionsdiv").fadeIn(function() {
-                                $("#buttonsdiv").fadeIn();
+                                $("#adsdiv").fadeIn(function() {
+                                    if (adBlockEnabled) $("#adblocker_detected").show()
+                                    else (adsbygoogle = window.adsbygoogle || []).push({});
+                                    $("#buttonsdiv").fadeIn();
+                                });
                             });
                         });
                     });
@@ -350,7 +359,7 @@ function register() {
                     $('html').removeClass('is-clipped');
                     $('#register_modal').removeClass('is-active');
                     $("#regibutton").removeClass("is-loading");
-                    show_modal(data.result, "Success");
+                    show_modal("Wallet successfully created", "Success");
                 } else {
                     $('html').removeClass('is-clipped');
                     $('#register_modal').removeClass('is-active');
