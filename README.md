@@ -12,7 +12,7 @@
   <img src="images/magi2021banner_dark.png" width="430px"/>
 </a>
 
-## Magi network explorer
+## Magi 2021 webservices
 
-This repository contains the source code for Coin Magi explorer that's related to an upcoming project of mine.<br>
+This repository contains the source codes for the Coin Magi explorer and the Web Wallet.<br>
 More docs to come in the future
