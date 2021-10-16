@@ -1,8 +1,40 @@
 @import url('https://fonts.googleapis.com/css2?family=Comfortaa&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Mono&display=swap');
 @import url('https://cdn.jsdelivr.net/npm/@creativebulma/bulma-divider@1.1.0/dist/bulma-divider.min.css');
+
+
+html {
+    --strong-color-dark: #0d1423;
+    --light-color-dark: #191F2E;
+
+    --element-color-dark: #6ac2ee37;
+
+    --shadow-color-dark: #0A101C;
+    --inset-color-dark: #10182A55;
+
+
+
+    --strong-color-light: #6ac2ee;
+    --light-color-light: #e0f5ff;
+
+    --element-color-light: #6ac2ee;
+
+    --shadow-color-light: #60b1d9;
+    --inset-color-light: #74d3ff55;
+}
+
+#transactions {
+    margin: 0 !important;
+    max-height: 20rem !important;
+    overflow-y: auto !important;
+}
 
 body {
     font-family: 'Comfortaa', Sans-Serif;
+}
+
+monospace {
+    font-family: 'Noto Sans Mono', monospace;
 }
 
 .button,
@@ -19,26 +51,77 @@ body {
 
 @media (prefers-color-scheme: dark) {
     html {
-        background-color: #0d1423F2;
+        background-color: var(--light-color-dark);
+    }
+
+    input:-webkit-autofill,
+    input:-webkit-autofill:hover,
+    input:-webkit-autofill:focus,
+    input:-webkit-autofill:active {
+        transition: background-color 5000s ease-in-out 0s;
+        -webkit-text-fill-color: #fff !important;
+        background-color: transparent !important;
+    }
+
+    .modal-card-body {
+        background-color: #191f2f !important;
+        background: #191f2f !important;
+        border-bottom-left-radius: 12px;
+        border-bottom-right-radius: 12px;
+    }
+
+    .modal-card-head {
+        background-color: var(--shadow-color-dark) !important;
+        background: var(--shadow-color-dark) !important;
+        border-top-left-radius: 12px;
+        border-top-right-radius: 12px;
+        border: none;
+    }
+
+    ::-webkit-scrollbar {
+        width: 5px;
+        height: 5px;
+    }
+
+    ::-webkit-scrollbar-track {
+        background: var(--inset-color-dark);
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background: var(--shadow-color-dark);
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+        background: var(--strong-color-dark);
+    }
+
+    select {
+        border: none !important;
+        background: #2d3436 !important;
+        color: #fafafa !important;
+    }
+
+    .navbar,
+    .footer {
+        box-shadow: 0px 6px 6px var(--shadow-color-dark), -6px -6px 9px var(--inset-color-dark);
     }
 
     .navbar,
     #loader-wrapper,
     .footer,
     .has-background-magi {
-        background-color: #0d1423;
+        background-color: var(--strong-color-dark);
     }
 
-    .box {
-        background-color: #6ac2ee25;
-        box-shadow: 0 0 5px #00000066 !important;
-    }
-
-    .input {
-        background-color: #6ac2ee37;
+    .input,
+    .button {
+        border: none;
+        background: #191f2e;
+        box-shadow: 0px 6px 12px #131723, -6px -6px 12px #1f273a;
     }
 
     .img-load {
+        width: 150px;
         height: 150px;
         content: url("../images/magi2021_light.png");
     }
@@ -46,41 +129,137 @@ body {
     #logo {
         content: url("../images/magi2021banner_dark.png");
     }
-}
 
-@media (prefers-color-scheme: light) {
-    html {
-        background-color: #e0f5ff;
-    }
 
-    p,
-    span {
-        color: hsl(0, 0%, 7%);
+    .button:hover, .input:hover {
+        position: relative;
+        z-index: 1;
+        box-shadow: 3px 3px 5px #141824, -3px -3px 5px #1e2638;
+        transition: 0.2s;   
     }
 
     .box {
-        background-color: #6ac2ee27;
+        -webkit-border-radius: 12px;
+        border-radius: 12px;
+        background: #191f2f !important;
+        -webkit-box-shadow: 6px 6px 12px #141824, -6px -6px 12px #1e2638;
+        box-shadow: 6px 6px 12px #141824, -6px -6px 12px #1e2638;
+    }
+}
+
+
+@media (prefers-color-scheme: light) {
+    html {
+        background-color: var(--light-color-light);
+    }
+
+    input:-webkit-autofill,
+    input:-webkit-autofill:hover,
+    input:-webkit-autofill:focus,
+    input:-webkit-autofill:active {
+        transition: background-color 5000s ease-in-out 0s;
+        -webkit-text-fill-color: hsl(0, 0, 0.8) !important;
+        background-color: transparent !important;
+    }
+
+    ::-webkit-scrollbar {
+        width: 5px;
+        height: 5px;
+    }
+
+
+    .button:hover, .input:hover {
+        position: relative;
+        z-index: 1;
+        box-shadow: 3px 3px 5px #ccdfe8, -3px -3px 5px #f4ffff;
+        transition: 0.2s;   
+    }
+
+    ::-webkit-scrollbar-track {
+        background: var(--inset-color-light);
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background: var(--shadow-color-light);
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+        background: var(--strong-color-light);
+    }
+
+    .modal-card-body {
+        background-color: val(--light-color-light) !important;
+        background: val(--light-color-light) !important;
+        border-bottom-left-radius: 12px;
+        border-bottom-right-radius: 12px;
+    }
+
+    .modal-card-head {
+        background-color: var(--shadow-color-light) !important;
+        background: var(--shadow-color-light) !important;
+        border-top-left-radius: 12px;
+        border-top-right-radius: 12px;
+        border: none;
+    }
+
+    .navbar,
+    .footer {
+        box-shadow: 0px 6px 12px var(--shadow-color-light), -6px -6px 12px var(--inset-color-light);
+    }
+
+    .box {
+        -webkit-border-radius: 12px;
+        border-radius: 12px;
+        background: #eff0f077 !important;
+        -webkit-box-shadow: 12px 12px 13px #ccdfe8, -12px -12px 13px #f4ffff;
+        box-shadow: 12px 12px 13px #ccdfe8, -12px -12px 13px #f4ffff;
     }
 
     .navbar,
     #loader-wrapper,
     .footer,
     .has-background-magi {
-        background-color: #6ac2ee;
+        background-color: var(--strong-color-light);
     }
 
-    .input {
-        background-color: #6ac2ee37;
+    .input,
+    .button {
+        border: none;
+        background: #e0f5ff;
+        box-shadow: 0px 6px 12px #ccdfe8, -6px -6px 12px #f4ffff;
     }
 
     .img-load {
         height: 150px;
+        width: 150px;
         content: url("../images/magi2021_dark.png");
     }
 
     #logo {
         content: url("../images/magi2021banner_light.png");
     }
+}
+
+body {
+    height: 95vh;
+    margin: 0;
+}
+
+header {
+    min-height: 50px;
+}
+
+footer {
+    min-height: 50px;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+footer {
+    margin-top: auto;
 }
 
 .notification {
@@ -104,9 +283,85 @@ body {
     z-index: 777;
 }
 
+.navbar-burger {
+    margin-left: auto !important;
+    right: 0 !important;
+}
+
+
+.navbar-item {
+    transition: 0.2s;
+}
+
+.navbar-item:hover {
+    background-color: transparent !important;
+    color: #fff !important;
+    transition: 0.2s;
+}
+
 .load {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+}
+
+.modal {
+    animation: fadeIn 0.3s;
+    -webkit-animation: fadeIn 0.3s;
+    -moz-animation: fadeIn 0.3s;
+    -o-animation: fadeIn 0.3s;
+    -ms-animation: fadeIn 0.3s;
+    transition: 0.3s;
+}
+
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@-moz-keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@-webkit-keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@-o-keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@-ms-keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
 }

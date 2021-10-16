@@ -1,8 +1,5 @@
-const api = "http://5.230.69.132";
-
-if (window.location.href != "http://5.230.69.132") {
-    window.location.href = "http://5.230.69.132";
-}
+const api = "https://magi.duinocoin.com";
+//if (!window.location.href.includes("magi.duinocoin.com")) window.location.href = "https://magi.duinocoin.com/";
 
 String.prototype.escape = function() {
     var tagsToReplace = {
@@ -59,12 +56,20 @@ function fill_stats() {
         })
         .then(response => response.json())
         .then(data => {
-            console.log(data.result)
             if (data.success) {
                 update_element("hashrate", scientific_prefix("H/s", data.result.hashrate));
 
                 update_element("diff_pos", round_to(4, data.result.difficulty.pos));
+                update_element("diff_posm", round_to(4, data.result.difficulty.pos));
                 update_element("diff_pow", round_to(3, data.result.difficulty.pow));
+                update_element("diff_powm", round_to(3, data.result.difficulty.pow));
+
+                update_element("price", `$${round_to(4, data.result.price.max)}`);
+                maxprice = data.result.price.max;
+                delete data.result.price.max;
+                for (price in data.result.price) 
+                    if (data.result.price[price] == maxprice) pricefrom = price;
+                update_element("pricefrom", `at <b>${pricefrom}</b>`);
 
                 update_element("reward", `<b>${round_to(2, data.result.reward)} XMG</b>`);
 
@@ -117,15 +122,15 @@ function btnsearch() {
                             </div>
                             <div class="column is-full mt-1">
                                 <i class="mdi mdi-account-arrow-right"></i>
-                                <span>Sender: <b>${data.result.sender}</b></span>
+                                <span>First account: <b><monospace>${data.result.sender}</monospace></b></span>
                             </div>
                             <div class="column is-full mt-1">
                                 <i class="mdi mdi-account-arrow-left"></i>
-                                <span>Recipient: <b>${data.result.recipient}</b></span>
+                                <span>Second account: <b><monospace>${data.result.recipient}</monospace></b></span>
                             </div>
                             <div class="column is-full mt-1">
                                 <i class="mdi mdi-message"></i>
-                                <span>Memo: <b>${data.result.memo}</b></span>
+                                <span>Memo: <b><i>${data.result.memo}</i></b></span>
                             </div>
                             <div class="column is-full mt-1">
                                 <i class="mdi mdi-clock"></i>
@@ -133,7 +138,7 @@ function btnsearch() {
                             </div>
                             <div class="column is-full mt-1">
                                 <i class="mdi mdi-dots-grid"></i>
-                                <span>Block: <b>${data.result.block}</b></span>
+                                <span>Block: <b><monospace>${data.result.block}</monospace></b></span>
                             </div>
                         </div>
                     </div>
@@ -171,6 +176,18 @@ window.addEventListener('load', function() {
     window.setInterval(function() {
         fill_stats()
     }, 7.5 * 1000);
+
+
+    const url_string = window.location;
+    const url = new URL(url_string);
+    let search_tag = url.searchParams.get("search");
+    console.log(search_tag);
+    if (search_tag) {
+        search_tag = search_tag.escape()
+        console.log(`Searching for ${search_tag}`);
+        $("#txid").val(search_tag);
+        $("#searchbtn").trigger('click');
+    }
 
     window.setTimeout(function() {
         $("#loader-wrapper").fadeOut('slow');
