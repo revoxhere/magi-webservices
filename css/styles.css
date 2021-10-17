@@ -127,6 +127,8 @@ monospace {
     }
 
     #logo {
+        max-width: 3em;
+        max-height: 1em;
         content: url("../images/magi2021banner_dark.png");
     }
 
@@ -236,6 +238,8 @@ monospace {
     }
 
     #logo {
+        max-width: 3em;
+        max-height: 1em;
         content: url("../images/magi2021banner_light.png");
     }
 }
