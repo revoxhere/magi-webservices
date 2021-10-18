@@ -2,6 +2,20 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Mono&display=swap');
 @import url('https://cdn.jsdelivr.net/npm/@creativebulma/bulma-divider@1.1.0/dist/bulma-divider.min.css');
 
+iframe {
+    max-height: 5em;
+    width: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+}
+
+.iframe_container {
+    max-height: 5em;
+}
+
 
 html {
     --strong-color-dark: #0d1423;
@@ -121,23 +135,24 @@ monospace {
     }
 
     .img-load {
-        width: 150px;
-        height: 150px;
+        max-height: 150px;
+        max-width: 150px;
         content: url("../images/magi2021_light.png");
     }
 
     #logo {
-        max-width: 3em;
-        max-height: 1em;
+        max-width: 5em;
+        max-height: 3em;
         content: url("../images/magi2021banner_dark.png");
     }
 
 
-    .button:hover, .input:hover {
+    .button:hover,
+    .input:hover {
         position: relative;
         z-index: 1;
         box-shadow: 3px 3px 5px #141824, -3px -3px 5px #1e2638;
-        transition: 0.2s;   
+        transition: 0.2s;
     }
 
     .box {
@@ -170,11 +185,12 @@ monospace {
     }
 
 
-    .button:hover, .input:hover {
+    .button:hover,
+    .input:hover {
         position: relative;
         z-index: 1;
         box-shadow: 3px 3px 5px #ccdfe8, -3px -3px 5px #f4ffff;
-        transition: 0.2s;   
+        transition: 0.2s;
     }
 
     ::-webkit-scrollbar-track {
@@ -232,14 +248,14 @@ monospace {
     }
 
     .img-load {
-        height: 150px;
-        width: 150px;
+        max-height: 150px;
+        max-width: 150px;
         content: url("../images/magi2021_dark.png");
     }
 
     #logo {
-        max-width: 3em;
-        max-height: 1em;
+        max-width: 5em;
+        max-height: 3em;
         content: url("../images/magi2021banner_light.png");
     }
 }
