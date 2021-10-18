@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Mono&display=swap');
 @import url('https://cdn.jsdelivr.net/npm/@creativebulma/bulma-divider@1.1.0/dist/bulma-divider.min.css');
 
-iframe {
+.news {
     max-height: 5em;
     width: 100%;
     top: 0;
@@ -58,7 +58,7 @@ monospace {
 }
 
 @media (min-width: 666px) {
-    html {
+    html:not(.h-captcha) {
         zoom: 125%;
     }
 }
