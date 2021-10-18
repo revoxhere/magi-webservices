@@ -4,8 +4,7 @@ if (!window.location.href.includes("magi.duinocoin.com")) window.location.href =
 
 let adBlockEnabled = false;
 const googleAdUrl = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js';
-try {fetch(new Request(googleAdUrl)).catch(_ => adBlockEnabled = true)}
-catch (e) {adBlockEnabled = true}
+try { fetch(new Request(googleAdUrl)).catch(_ => adBlockEnabled = true) } catch (e) { adBlockEnabled = true }
 
 String.prototype.escape = function() {
     var tagsToReplace = {
@@ -146,6 +145,17 @@ function fetch_data(username) {
     });
 }
 
+function stakeinfo() {
+    $.getJSON('https://magi.duinocoin.com/statistics',
+        function(data) {
+            data = data.result;
+            update_element("stake_interest", data.stake_interest);
+            update_element("stake_hours", `~ ${data.hours_to_stake} hours`);
+        }).fail(function() {
+        console.log("Error getting stake info")
+    });
+}
+
 function login(username, password) {
     $.getJSON('https://magi.duinocoin.com/auth/' +
         encodeURIComponent(username) +
@@ -158,6 +168,7 @@ function login(username, password) {
                     setcookie("username", username, 30);
                 }
                 fetch_data(username);
+                stakeinfo();
                 setInterval(function() {
                     fetch_data(username);
                 }, 15 * 1000);
@@ -166,10 +177,12 @@ function login(username, password) {
                     $("#balancediv").fadeIn(function() {
                         $("#pricesdiv").fadeIn(function() {
                             $("#transactionsdiv").fadeIn(function() {
-                                $("#adsdiv").fadeIn(function() {
-                                    if (adBlockEnabled) $("#adblocker_detected").show()
-                                    else (adsbygoogle = window.adsbygoogle || []).push({});
-                                    $("#buttonsdiv").fadeIn();
+                                $("#newsdiv").fadeIn(function() {
+                                    $("#adsdiv").fadeIn(function() {
+                                        if (adBlockEnabled) $("#adblocker_detected").show()
+                                        else(adsbygoogle = window.adsbygoogle || []).push({});
+                                        $("#buttonsdiv").fadeIn();
+                                    });
                                 });
                             });
                         });
