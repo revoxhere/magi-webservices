@@ -16,7 +16,6 @@
     max-height: 5em;
 }
 
-
 html {
     --strong-color-dark: #0d1423;
     --light-color-dark: #191F2E;
@@ -48,7 +47,7 @@ body {
 }
 
 monospace {
-    font-family: 'Noto Sans Mono', monospace;
+    font-family: 'Noto Sans Mono', monospace !important;
 }
 
 .button,
@@ -58,7 +57,7 @@ monospace {
 }
 
 @media (min-width: 666px) {
-    html:not(.h-captcha) {
+    html {
         zoom: 125%;
     }
 }
