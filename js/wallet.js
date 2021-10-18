@@ -208,7 +208,7 @@ function show_modal(content, title) {
 function show_register_modal() {
     $('html').addClass('is-clipped');
     $('#register_modal').addClass('is-active');
-    $("#register_modal .modal-card-title").html("Create a new wallet");
+    $("#register_modal .modal-card-title").html("Register on Coin Magi network");
 }
 
 function send_funds() {
