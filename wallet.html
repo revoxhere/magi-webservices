@@ -232,15 +232,13 @@
                             News center
                         </p>
                         <div class="iframe_container">
-                            <div>
-                                <iframe src="https://magi.duinocoin.com/news.html" frameborder="0" style="word-break:break-all;width:100%;overflow:auto;height:10rem" allowtransparency="true">Please wait</iframe>
-                            </div>
+                            <iframe class="news" src="https://magi.duinocoin.com/news.html" frameborder="0" style="word-break:break-all;width:100%;overflow:auto;height:10rem" allowtransparency="true">Please wait</iframe>
                         </div>
                     </div>
                 </div>
                 <div class="column">
                     <div id="adsdiv" class="box" style="display:none">
-                        <ins class="adsbygoogle" style="display:block" align="center" data-ad-client="ca-pub-4670059148424169" data-ad-slot="3091479532" data-ad-format="horizontal" data-full-width-responsive="false"></ins>
+                        <ins class="adsbygoogle is-centered is-vcentered" style="display:block;padding-bottom:0;" align="center" data-ad-client="ca-pub-4670059148424169" data-ad-slot="3091479532" data-ad-format="horizontal" data-full-width-responsive="false"></ins>
                         <div class="content" id="adblocker_detected" style="display:none">
                             <p class="title is-size-6 mb-5">
                                 An ad should be here but you're using an adblocker 😞
@@ -320,17 +318,23 @@
                 <div id="modal-content">
                     <div class="columns is-multiline">
                         <div class="column is-full">
-                            <span class="heading">Username</span>
+                            <span class="heading">Are you a robot?</span>
+                            <div class="h-captcha" render="explicit" data-theme="dark" data-sitekey="b55d32a3-c6d8-41f1-ba86-02081443d7ab"></div>
+                            <small id="captchainfo" class="has-text-danger"></small>
+                            <small class="has-text-danger"></small>
+                        </div>
+                        <div class="column is-full">
+                            <span class="heading">Wallet username</span>
                             <input class="input" id="username_regi" placeholder="e.g. revox" type="text">
                             <small class="has-text-danger"></small>
                         </div>
                         <div class="column is-full">
-                            <span class="heading">Password</span>
+                            <span class="heading">Wallet Password</span>
                             <input class="input" id="password_regi" placeholder="*****" type="password">
                             <small class="has-text-danger"></small>
                         </div>
                         <div class="column is-full">
-                            <span class="heading">Cornfirm password</span>
+                            <span class="heading">Cornfirm wallet password</span>
                             <input class="input" id="password_regi_conf" placeholder="*****" type="password">
                             <small class="has-text-danger"></small>
                         </div>
@@ -340,13 +344,8 @@
                             <small class="has-text-danger"></small>
                         </div>
                         <div class="column is-full">
-                            <div class="h-captcha" data-theme="dark" data-sitekey="b55d32a3-c6d8-41f1-ba86-02081443d7ab"></div>
-                            <small id="captchainfo" class="has-text-danger"></small>
-                            <small class="has-text-danger"></small>
-                        </div>
-                        <div class="column is-full">
                             <button class="button is-fullwidth" id="regibutton" onclick="register()">
-                                Register
+                                Create a new wallet
                             </button>
                         </div>
                     </div>
