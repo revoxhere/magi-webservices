@@ -407,6 +407,8 @@ window.addEventListener('load', function() {
         if ($("#usernameinput").val() && $("#passwordinput").val()) {
             $("#loginbutton").addClass("is-loading")
             username = $("#usernameinput").val();
+            //trim the username field to remove extra spaces
+            username = username.replace(/^[ ]+|[ ]+$/g,'')
             password = $("#passwordinput").val();
             login(username, password);
         }
