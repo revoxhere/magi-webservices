@@ -1,6 +1,6 @@
 <!--
 *** Official Duino-Coin rest api README
-*** by revoxhere, 2021
+*** by revoxhere, 2021-2022
 -->
 
 <a href="https://revoxhere.github.io/magi-website">
@@ -13,6 +13,8 @@
 </a>
 
 ## Magi 2021 webservices
+
+Copyright revoxhere 2021-2022
 
 This repository contains the source codes for the Coin Magi explorer and the Web Wallet.<br>
 More docs to come in the future
