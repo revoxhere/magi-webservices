@@ -1,359 +1,362 @@
 <!DOCTYPE html>
 <html>
-
-<head>
-    <meta charset="utf-8">
-    <meta name="robots" content="index, follow">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <meta name="language" content="English">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" href="images/magi2021_dark.png">
-    <link rel="shortcut icon" href="images/magi2021_dark.png">
-    <title>Coin Magi | Web Wallet</title>
-    <meta name="apple-mobile-web-app-title" content="Coin Magi | Web Wallet">
-    <meta name="application-name" content="Coin Magi | Web Wallet">
-    <meta name="twitter:title" content="Coin Magi | Web Wallet">
-    <meta property="og:title" content="Coin Magi | Web Wallet">
-    <meta name="description" content="An online wallet for Coin Magi (XMG) with built-in staking functions and transaction optimizations.">
-    <meta name="twitter:description" content="An online wallet for Coin Magi (XMG) with built-in staking functions and transaction optimizations.">
-    <meta property="og:description" content="An online wallet for Coin Magi (XMG) with built-in staking functions and transaction optimizations.">
-    <meta name="keywords" content="Coin Magi, XMG, Duino Coin, DUCO">
-    <meta name="author" content="revox from the Duino-Coin Team">
-    <meta property="og:url" content="https://magi.duinocoin.com">
-    <meta name="msapplication-TileColor" content="#6ac2ee">
-    <meta name="theme-color" content="#6ac2ee">
-    <meta name="twitter:site" content="@DuinoCoin">
-    <meta name="twitter:image" content="https://magi.duinocoin.com/images/magi2021banner_light.png">
-    <meta property="og:image" content="https://magi.duinocoin.com/images/magi2021banner_light.png">
-    <meta property="og:image:url" content="https://magi.duinocoin.com/images/magi2021banner_light.png">
-    <meta name="twitter:card" content="summary_large_image">
-    <link rel="stylesheet" href="https://bulma.io/css/bulma-docs.min.css?v=202109240709">
-    <link rel="stylesheet" href="https://wallet.duinocoin.com/css/bulma-prefers-dark.min.css">
-    <script src="https://wallet.duinocoin.com/js/jquery-3.6.0.min.js"></script>
-    <link rel="stylesheet" href="css/styles.css">
-    <script src="https://wallet.duinocoin.com/js/fontawesome.js"></script>
-    <script src="https://js.hcaptcha.com/1/api.js" async defer></script>
-    <script type="text/javascript" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-</head>
-
-<body>
-    <div id="loader-wrapper">
-        <div class="load">
-            <img class="img-load" src="../images/magi2021_light.png">
-            <p class="has-text-centered">
-                by <b>Duino-Coin</b>
-            </p>
-        </div>
-    </div>
-    <nav class="navbar" role="navigation" aria-label="main navigation">
-        <div class="navbar-brand">
-            <a href="/" class="navbar-item">
-                <figure class="image">
-                    <img id="logo" src="../images/magi2021banner_dark.png">
-                </figure>
-            </a>
-            <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="magiNavbar">
-                <span aria-hidden="true"></span>
-                <span aria-hidden="true"></span>
-                <span aria-hidden="true"></span>
-            </a>
-        </div>
-        <div id="magiNavbar" class="navbar-menu">
-            <div class="navbar-start">
-                <a class="navbar-item" href="/api.html">
-                    Docs/API
-                </a>
-            </div>
-            <div class="navbar-end">
-                <a class="navbar-item" href="/wallet.html">
-                    Online wallet
-                </a>
+    <head>
+        <meta charset="utf-8">
+        <meta name="robots" content="index, follow">
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <meta name="language" content="English">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=2">
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png?v=2">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png?v=2">
+        <link rel="manifest" href="/site.webmanifest?v=2">
+        <link rel="mask-icon" href="/safari-pinned-tab.svg?v=2" color="#5ac2ff">
+        <link rel="shortcut icon" href="/favicon.ico?v=2">
+        <meta name="msapplication-TileColor" content="#2d89ef">
+        <meta name="theme-color" content="#ffffff">
+        <title>Coin Magi | Web Wallet</title>
+        <meta name="apple-mobile-web-app-title" content="Coin Magi | Web Wallet">
+        <meta name="application-name" content="Coin Magi | Web Wallet">
+        <meta name="twitter:title" content="Coin Magi | Web Wallet">
+        <meta property="og:title" content="Coin Magi | Web Wallet">
+        <meta name="description" content="An online wallet for Coin Magi (XMG) with built-in staking functions and transaction optimizations.">
+        <meta name="twitter:description" content="An online wallet for Coin Magi (XMG) with built-in staking functions and transaction optimizations.">
+        <meta property="og:description" content="An online wallet for Coin Magi (XMG) with built-in staking functions and transaction optimizations.">
+        <meta name="keywords" content="Coin Magi, XMG, Duino Coin, DUCO">
+        <meta name="author" content="revox from the Duino-Coin Team">
+        <meta property="og:url" content="https://magi.duinocoin.com">
+        <meta name="msapplication-TileColor" content="#6ac2ee">
+        <meta name="theme-color" content="#6ac2ee">
+        <meta name="twitter:site" content="@DuinoCoin">
+        <meta name="twitter:image" content="https://magi.duinocoin.com/images/banner_wallet.png">
+        <meta property="og:image" content="https://magi.duinocoin.com/images/banner_wallet.png">
+        <meta property="og:image:url" content="https://magi.duinocoin.com/images/banner_wallet.png">
+        <meta name="twitter:card" content="summary_large_image">
+        <link rel="stylesheet" href="https://bulma.io/css/bulma-docs.min.css?v=202109240709">
+        <link rel="stylesheet" href="https://wallet.duinocoin.com/css/bulma-prefers-dark.min.css">
+        <script src="https://wallet.duinocoin.com/js/jquery-3.6.0.min.js"></script>
+        <link rel="stylesheet" href="css/styles.css">
+        <script src="https://wallet.duinocoin.com/js/fontawesome.js"></script>
+        <script src="https://js.hcaptcha.com/1/api.js" async defer></script>
+        <script type="text/javascript" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    </head>
+    <body>
+        <div id="loader-wrapper">
+            <div class="load">
+                <img class="img-load" src="../images/magi2021_light.png">
+                <p class="has-text-centered">
+                    by <b>Duino-Coin</b>
+                </p>
             </div>
         </div>
-    </nav>
-    <section class="section" id="loginsection">
-        <div class="container">
-            <div class="columns is-centered">
-                <div class="column is-narrow">
-                    <div class="box">
-                        <p class="title is-size-4">
-                            Sign in
-                            <span class="tag is-warning">BETA</span>
-                        </p>
-                        <p class="subtitle is-size-5">
-                            to your <b style="color:#6ac2ee">Magi</b> wallet
-                        </p>
-                        <div class="field mt-5">
-                            <div class="control has-icons-left">
-                                <input type="text" id="usernameinput" placeholder="Wallet (username)" class="input" required>
-                                <span class="icon is-left">
-                                    <i style="color: #6ac2ee" class="fa fa-user"></i>
-                                </span>
+        <nav class="navbar" role="navigation" aria-label="main navigation">
+            <div class="navbar-brand">
+                <a href="/" class="navbar-item">
+                    <figure class="image">
+                        <img id="logo" src="../images/magi2021banner_dark.png">
+                    </figure>
+                </a>
+                <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="magiNavbar">
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                </a>
+            </div>
+            <div id="magiNavbar" class="navbar-menu">
+                <div class="navbar-start">
+                    <a class="navbar-item" href="/api.html">
+                        Docs/API
+                    </a>
+                </div>
+                <div class="navbar-end">
+                    <a class="navbar-item" href="/wallet.html">
+                        Online wallet
+                    </a>
+                </div>
+            </div>
+        </nav>
+        <section class="section" id="loginsection">
+            <div class="container">
+                <div class="columns is-centered">
+                    <div class="column is-narrow">
+                        <div class="box">
+                            <p class="title is-size-4">
+                                Sign in
+                                <span class="tag is-warning">BETA</span>
+                            </p>
+                            <p class="subtitle is-size-5">
+                                to your <b style="color:#6ac2ee">Magi</b> wallet
+                            </p>
+                            <div class="field mt-5">
+                                <div class="control has-icons-left">
+                                    <input type="text" id="usernameinput" placeholder="Wallet (username)" class="input" required>
+                                    <span class="icon is-left">
+                                        <i style="color: #6ac2ee" class="fa fa-user"></i>
+                                    </span>
+                                </div>
                             </div>
-                        </div>
-                        <div class="field">
-                            <div class="control has-icons-left">
-                                <input type="password" id="passwordinput" placeholder="Password" class="input" required>
-                                <span class="icon is-left">
-                                    <i style="color: #6ac2ee" class="fa fa-lock"></i>
-                                </span>
+                            <div class="field">
+                                <div class="control has-icons-left">
+                                    <input type="password" id="passwordinput" placeholder="Password" class="input" required>
+                                    <span class="icon is-left">
+                                        <i style="color: #6ac2ee" class="fa fa-lock"></i>
+                                    </span>
+                                </div>
                             </div>
-                        </div>
-                        <div class="field" style="margin-left:0.1em">
-                            <label class="b-checkbox checkbox">
-                                <input type="checkbox" id="remember">
-                                <span class="check is-success"></span>
-                                <span class="control-label">Remember me</span>
-                            </label>
-                        </div>
-                        <p id="logintext"></p>
-                        <div class="field mt-3">
-                            <div class="buttons">
-                                <button class="button" id="loginbutton">
+                            <div class="field" style="margin-left:0.1em">
+                                <label class="b-checkbox checkbox">
+                                    <input type="checkbox" id="remember">
+                                    <span class="check is-success"></span>
+                                    <span class="control-label">Remember me</span>
+                                </label>
+                            </div>
+                            <p id="logintext"></p>
+                            <div class="field mt-3">
+                                <div class="buttons">
+                                    <button class="button" id="loginbutton">
                                     Login
-                                </button>
-                                <button class="button" onclick="show_register_modal()">
+                                    </button>
+                                    <button class="button" onclick="show_register_modal()">
                                     Create a new wallet
-                                </button>
+                                    </button>
+                                </div>
                             </div>
+                            <p class="mt-5 m-0 subtitle is-size-7 has-text-right">
+                                by <b><a style="color:#d35400" href="https://duinocoin.com">Duino-Coin</a></b>
+                            </p>
                         </div>
-                        <p class="mt-5 m-0 subtitle is-size-7 has-text-right">
-                            by <b><a style="color:#d35400" href="https://duinocoin.com">Duino-Coin</a></b>
-                        </p>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
-    <section class="section" id="walletsection">
-        <div class="container">
-            <div class="columns is-multiline">
-                <div class="column is-half">
-                    <div class="box" id="balancediv" style="display:none">
-                        <div class="columns">
-                            <div class="column">
-                                <p class="heading">
-                                    Welcome back, <b id="username">user</b>!
-                                </p>
-                                <p class="title" id="balance">
-                                    Fetching data
-                                </p>
-                                <p class="subtitle" id="balanceusd">
-                                    ≈ $0
-                                </p>
-                            </div>
-                            <div class="column buttons">
-                                <button class="button is-fullwidth mb-3" id="send">
+        </section>
+        <section class="section" id="walletsection">
+            <div class="container">
+                <div class="columns is-multiline">
+                    <div class="column is-half">
+                        <div class="box" id="balancediv" style="display:none">
+                            <div class="columns">
+                                <div class="column">
+                                    <p class="heading">
+                                        Welcome back, <b id="username">user</b>!
+                                    </p>
+                                    <p class="title" id="balance">
+                                        Fetching data
+                                    </p>
+                                    <p class="subtitle" id="balanceusd">
+                                        ≈ $0
+                                    </p>
+                                </div>
+                                <div class="column buttons">
+                                    <button class="button is-fullwidth mb-3" id="send">
                                     Send
-                                </button>
-                                <button class="button is-fullwidth" id="receive">
+                                    </button>
+                                    <button class="button is-fullwidth" id="receive">
                                     Receive
-                                </button>
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="column is-half">
-                    <div class="box" id="pricesdiv" style="display:none">
-                        <p class="heading">
-                            Exchange rates
-                        </p>
-                        <div class="columns is-mobile">
-                            <div class="column">
-                                <p class="title is-size-6" id="price_ducoe">
-                                    ?
-                                </p>
-                                <p class="subtitle is-size-7">
-                                    <img class="icon icon-text is-small" src="images/ducoexchange.png">
-                                    <a href="https://exchange.duinocoin.com">
-                                        <b>DUCO Exchange</b>
-                                    </a>
-                                </p>
-                            </div>
-                            <div class="column">
-                                <p class="title is-size-6" id="price_btcpop">
-                                    ?
-                                </p>
-                                <p class="subtitle is-size-7">
-                                    <img class="icon icon-text is-small" src="images/btcpop.png">
-                                    <a href="https://btcpop.co">
-                                        <b>BTCpop</b>
-                                    </a>
-                                </p>
-                            </div>
-                            <div class="column">
-                                <p class="title is-size-6" id="price_moondex">
-                                    ?
-                                </p>
-                                <p class="subtitle is-size-7">
-                                    <img class="icon icon-text is-small" src="images/moondex.png">
-                                    <a href="https://moondex.org">
-                                        <b>Moondex</b>
-                                    </a>
-                                </p>
-                            </div>
-                        </div>
-                        <p class="heading">
-                            Staking info (mPoS II)
-                        </p>
-                        <div class="columns is-mobile">
-                            <div class="column">
-                                <p class="title is-size-6" id="stake_interest">
-                                    ?
-                                </p>
-                                <p class="subtitle is-size-7">
-                                    Stake interest
-                                </p>
-                            </div>
-                            <div class="column">
-                                <p class="title is-size-6" id="stake_hours">
-                                    ?
-                                </p>
-                                <p class="subtitle is-size-7">
-                                    Next staking in
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="column is-full">
-                    <div class="box" id="transactionsdiv" style="display:none">
-                        <p class="heading">
-                            Last transactions
-                        </p>
-                        <div id="transactions">
-                            Fetching data
-                        </div>
-                    </div>
-                </div>
-                <div class="column">
-                    <div class="box" id="newsdiv" style="display:none">
-                        <p class="heading">
-                            News center
-                        </p>
-                        <div class="iframe_container">
-                            <iframe class="news" src="https://magi.duinocoin.com/news.html" frameborder="0" style="word-break:break-all;width:100%;overflow:auto;height:10rem" allowtransparency="true">Please wait</iframe>
-                        </div>
-                    </div>
-                </div>
-                <div class="column">
-                    <div id="adsdiv" class="box" style="display:none">
-                        <ins class="adsbygoogle is-centered is-vcentered" style="display:block;padding-bottom:0;" align="center" data-ad-client="ca-pub-4670059148424169" data-ad-slot="3091479532" data-ad-format="horizontal" data-full-width-responsive="false"></ins>
-                        <div class="content" id="adblocker_detected" style="display:none">
-                            <p class="title is-size-6 mb-5">
-                                An ad should be here but you're using an adblocker 😞
+                    <div class="column is-half">
+                        <div class="box" id="pricesdiv" style="display:none">
+                            <p class="heading">
+                                Exchange rates
                             </p>
-                            <p class="subtitle is-size-6">
-                                We host the Magi & Duino public APIs and the web servers from <span class="has-text-danger-dark">our own money</span> that is often limited or not sufficient. The <b>single ad here</b> helps to cover these costs.<br>
-                                If you're enjoying our projects, it would be cool if you supported us by buying our
-                                <a href="https://store.duinocoin.com" target="_blank">official merch</a>
-                                or
-                                <a href="https://duinocoin.com/donate" target="_blank">donating</a>.
-                                <span class="has-text-success-dark">Thanks in advance 🥺</span>
+                            <div class="columns is-mobile">
+                                <div class="column">
+                                    <p class="title is-size-6" id="price_ducoe">
+                                        ?
+                                    </p>
+                                    <p class="subtitle is-size-7">
+                                        <img class="icon icon-text is-small" src="images/ducoexchange.png">
+                                        <a href="https://exchange.duinocoin.com">
+                                            <b>DUCO Exchange</b>
+                                        </a>
+                                    </p>
+                                </div>
+                                <!--<div class="column">
+                                    <p class="title is-size-6" id="price_btcpop">
+                                        ?
+                                    </p>
+                                    <p class="subtitle is-size-7">
+                                        <img class="icon icon-text is-small" src="images/btcpop.png">
+                                        <a href="https://btcpop.co">
+                                            <b>BTCpop</b>
+                                        </a>
+                                    </p>
+                                </div>
+                                <div class="column">
+                                    <p class="title is-size-6" id="price_moondex">
+                                        ?
+                                    </p>
+                                    <p class="subtitle is-size-7">
+                                        <img class="icon icon-text is-small" src="images/moondex.png">
+                                        <a href="https://moondex.org">
+                                            <b>Moondex</b>
+                                        </a>
+                                    </p>
+                                </div>-->
+                            </div>
+                            <p class="heading">
+                                Staking (mPoS II)
                             </p>
+                            <div class="columns is-mobile">
+                                <div class="column">
+                                    <p class="title is-size-6" id="stake_interest">
+                                        ?
+                                    </p>
+                                    <p class="subtitle is-size-7">
+                                        Stake interest
+                                    </p>
+                                </div>
+                                <div class="column">
+                                    <p class="title is-size-6" id="stake_hours">
+                                        ?
+                                    </p>
+                                    <p class="subtitle is-size-7">
+                                        Next staking in
+                                    </p>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="column">
-                    <div id="buttonsdiv" style="display:none">
-                        <div class="buttons">
-                            <a target="_blank" href="https://wallet.duinocoin.com" class="button">
-                                <img class="icon icon-text" src="images/duco.png">
-                                <span class="mt-1">Duino-Coin Web Wallet</span>
-                            </a>
-                            <a target="_blank" href="https://magi.duinocoin.com" class="button">
-                                <img class="icon icon-text" src="images/magi2021_light.png">
-                                <span class="mt-1">Magi Network explorer</span>
-                            </a>
-                            <button class="button" onclick="logout()">
+                    <div class="column is-full">
+                        <div class="box" id="transactionsdiv" style="display:none">
+                            <p class="heading">
+                                Last transactions
+                            </p>
+                            <div id="transactions">
+                                Fetching data
+                            </div>
+                        </div>
+                    </div>
+                    <div class="column">
+                        <div class="box" id="newsdiv" style="display:none">
+                            <p class="heading">
+                                News center
+                            </p>
+                            <div class="iframe_container">
+                                <iframe class="news" src="https://magi.duinocoin.com/news.html" frameborder="0" style="word-break:break-all;width:100%;overflow:auto;height:10rem" allowtransparency="true">Please wait</iframe>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="column">
+                        <div id="adsdiv" class="box" style="display:none">
+                            <ins class="adsbygoogle is-centered is-vcentered" style="display:block;padding-bottom:0;" align="center" data-ad-client="ca-pub-4670059148424169" data-ad-slot="3091479532" data-ad-format="horizontal" data-full-width-responsive="false"></ins>
+                            <div class="content" id="adblocker_detected" style="display:none">
+                                <p class="title is-size-6 mb-5">
+                                    An ad should be here but you're using an adblocker 😞
+                                </p>
+                                <p class="subtitle is-size-6">
+                                    We host the Magi & Duino public APIs and the web servers from <span class="has-text-danger-dark">our own money</span> that is often limited or not sufficient. The <b>single ad here</b> helps to cover these costs.<br>
+                                    If you're enjoying our projects, it would be cool if you supported us by buying our
+                                    <a href="https://store.duinocoin.com" target="_blank">official merch</a>
+                                    or
+                                    <a href="https://duinocoin.com/donate" target="_blank">donating</a>.
+                                    <span class="has-text-success-dark">Thanks in advance 🥺</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="column">
+                        <div id="buttonsdiv" style="display:none">
+                            <div class="buttons">
+                                <a target="_blank" href="https://wallet.duinocoin.com" class="button">
+                                    <img class="icon icon-text" src="images/duco.png">
+                                    <span class="mt-1">Duino-Coin Web Wallet</span>
+                                </a>
+                                <a target="_blank" href="https://magi.duinocoin.com" class="button">
+                                    <img class="icon icon-text" src="images/magi2021_light.png">
+                                    <span class="mt-1">Magi Network explorer</span>
+                                </a>
+                                <button class="button" onclick="logout()">
                                 <i class="fa fa-fw fa-key icon-text"></i>&nbsp;
                                 <span>Logout</span>
-                            </button>
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
+        </section>
+        <footer class="footer">
+            <div class="content has-text-centered is-size-7">
+                <b>Coin Magi 2021-2022</b>
+                website by
+                <a href="https://revoxhere.github.io">
+                    <b>Robert "revox" Piotrowski</b>
+                </a> from the
+                <b>Duino team</b>
+                2019-2022<br>
+                This page is open-source.
+                You can improve it
+                <a href="https://github.com/revoxhere/magi-website">
+                    <b>here</b>
+                </a><br>
+                Made with
+                <a href="https://bulma.io">
+                    <b>Bulma</b>
+                </a>
+            </div>
+        </footer>
+        <div class="modal" id="modal">
+            <div class="modal-background"></div>
+            <div class="modal-card">
+                <header class="modal-card-head mx-3">
+                    <p class="modal-card-title" id="modal-title"></p>
+                    <button class="delete" aria-label="close"></button>
+                </header>
+                <section class="modal-card-body mx-3">
+                    <div id="modal-content"></div>
+                </section>
+            </div>
         </div>
-    </section>
-    <footer class="footer">
-        <div class="content has-text-centered is-size-7">
-            <b>Coin Magi 2021</b>
-            website by
-            <a href="https://revoxhere.github.io">
-                <b>Robert "revox" Piotrowski</b>
-            </a> from the
-            <b>Duino team</b>
-            2019-2021<br>
-            This page is open-source.
-            You can improve it
-            <a href="https://github.com/revoxhere/magi-website">
-                <b>here</b>
-            </a><br>
-            Made with
-            <a href="https://bulma.io">
-                <b>Bulma</b>
-            </a>
-        </div>
-    </footer>
-    <div class="modal" id="modal">
-        <div class="modal-background"></div>
-        <div class="modal-card">
-            <header class="modal-card-head mx-3">
-                <p class="modal-card-title" id="modal-title"></p>
-                <button class="delete" aria-label="close"></button>
-            </header>
-            <section class="modal-card-body mx-3">
-                <div id="modal-content"></div>
-            </section>
-        </div>
-    </div>
-    <div class="modal" id="register_modal">
-        <div class="modal-background"></div>
-        <div class="modal-card">
-            <header class="modal-card-head mx-3">
-                <p class="modal-card-title" id="modal-title"></p>
-                <button class="delete" aria-label="close"></button>
-            </header>
-            <section class="modal-card-body mx-3">
-                <div id="modal-content">
-                    <div class="columns is-multiline">
-                        <div class="column is-full">
-                            <span class="heading">Are you a robot?</span>
-                            <div class="h-captcha" render="explicit" data-theme="dark" data-sitekey="b55d32a3-c6d8-41f1-ba86-02081443d7ab"></div>
-                            <small id="captchainfo" class="has-text-danger"></small>
-                            <small class="has-text-danger"></small>
-                        </div>
-                        <div class="column is-full">
-                            <span class="heading">Wallet username</span>
-                            <input class="input" id="username_regi" placeholder="e.g. revox" type="text">
-                            <small class="has-text-danger"></small>
-                        </div>
-                        <div class="column is-full">
-                            <span class="heading">Wallet Password</span>
-                            <input class="input" id="password_regi" placeholder="*****" type="password">
-                            <small class="has-text-danger"></small>
-                        </div>
-                        <div class="column is-full">
-                            <span class="heading">Cornfirm wallet password</span>
-                            <input class="input" id="password_regi_conf" placeholder="*****" type="password">
-                            <small class="has-text-danger"></small>
-                        </div>
-                        <div class="column is-full">
-                            <span class="heading">E-Mail address</span>
-                            <input class="input" id="email_regi" placeholder="e.g. magi.lover@duinocoin.com" type="email">
-                            <small class="has-text-danger"></small>
-                        </div>
-                        <div class="column is-full">
-                            <button class="button is-fullwidth" id="regibutton" onclick="register()">
+        <div class="modal" id="register_modal">
+            <div class="modal-background"></div>
+            <div class="modal-card">
+                <header class="modal-card-head mx-3">
+                    <p class="modal-card-title" id="modal-title"></p>
+                    <button class="delete" aria-label="close"></button>
+                </header>
+                <section class="modal-card-body mx-3">
+                    <div id="modal-content">
+                        <div class="columns is-multiline">
+                            <div class="column is-full">
+                                <span class="heading">Are you a robot?</span>
+                                <div class="h-captcha" render="explicit" data-theme="dark" data-sitekey="b55d32a3-c6d8-41f1-ba86-02081443d7ab"></div>
+                                <small id="captchainfo" class="has-text-danger"></small>
+                                <small class="has-text-danger"></small>
+                            </div>
+                            <div class="column is-full">
+                                <span class="heading">Wallet username</span>
+                                <input class="input" id="username_regi" placeholder="e.g. revox" type="text">
+                                <small class="has-text-danger"></small>
+                            </div>
+                            <div class="column is-full">
+                                <span class="heading">Wallet Password</span>
+                                <input class="input" id="password_regi" placeholder="*****" type="password">
+                                <small class="has-text-danger"></small>
+                            </div>
+                            <div class="column is-full">
+                                <span class="heading">Cornfirm wallet password</span>
+                                <input class="input" id="password_regi_conf" placeholder="*****" type="password">
+                                <small class="has-text-danger"></small>
+                            </div>
+                            <div class="column is-full">
+                                <span class="heading">E-Mail address</span>
+                                <input class="input" id="email_regi" placeholder="e.g. magi.lover@duinocoin.com" type="email">
+                                <small class="has-text-danger"></small>
+                            </div>
+                            <div class="column is-full">
+                                <button class="button is-fullwidth" id="regibutton" onclick="register()">
                                 Create a new wallet
-                            </button>
+                                </button>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </section>
+                </section>
+            </div>
         </div>
-    </div>
-</body>
-<script src="js/wallet.js"></script>
-
+    </body>
+    <script src="js/wallet.js"></script>
 </html>

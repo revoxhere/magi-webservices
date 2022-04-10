@@ -1,404 +1,597 @@
 <!DOCTYPE html>
 <html>
-
-<head>
-    <meta charset="utf-8">
-    <meta name="robots" content="index, follow">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <meta name="language" content="English">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" href="images/magi2021_dark.png">
-    <link rel="shortcut icon" href="images/magi2021_dark.png">
-    <title>Coin Magi | Developer documentation</title>
-    <meta name="apple-mobile-web-app-title" content="Coin Magi | Developer documentation">
-    <meta name="application-name" content="Coin Magi | Developer documentation">
-    <meta name="twitter:title" content="Coin Magi | Developer documentation">
-    <meta property="og:title" content="Coin Magi | Developer documentation">
-    <meta name="description" content="View developer documentation of the Coin Magi 2021 APIs.">
-    <meta name="twitter:description" content="View developer documentation of the Coin Magi 2021 APIs.">
-    <meta property="og:description" content="View developer documentation of the Coin Magi 2021 APIs.">
-    <meta name="keywords" content="Coin Magi, XMG, Duino Coin, DUCO">
-    <meta name="author" content="revox from the Duino-Coin Team">
-    <meta property="og:url" content="https://magi.duinocoin.com">
-    <meta name="msapplication-TileColor" content="#6ac2ee">
-    <meta name="theme-color" content="#6ac2ee">
-    <meta name="twitter:site" content="@DuinoCoin">
-    <meta name="twitter:image" content="https://magi.duinocoin.com/images/magi2021banner_light.png">
-    <meta property="og:image" content="https://magi.duinocoin.com/images/magi2021banner_light.png">
-    <meta property="og:image:url" content="https://magi.duinocoin.com/images/magi2021banner_light.png">
-    <meta name="twitter:card" content="summary_large_image">
-    <link rel="stylesheet" href="https://bulma.io/css/bulma-docs.min.css?v=202109240709">
-    <link rel="stylesheet" href="https://wallet.duinocoin.com/css/bulma-prefers-dark.min.css">
-    <script src="https://wallet.duinocoin.com/js/jquery-3.6.0.min.js"></script>
-    <link rel="stylesheet" href="css/styles.css">
-    <script src="https://wallet.duinocoin.com/js/fontawesome.js"></script>
-    <link rel="stylesheet" href="css/github.css" media="(prefers-color-scheme: light)">
-    <link rel="stylesheet" href="css/monokai.css" media="(prefers-color-scheme: dark)">
-    <script src="js/rainbow.js"></script>
-</head>
-
-<body>
-    <div id="loader-wrapper">
-        <div class="load">
-            <img class="img-load" src="../images/magi2021_light.png">
-            <p class="has-text-centered">
-                by <b>Duino-Coin</b>
-            </p>
-        </div>
-    </div>
-    <nav class="navbar" role="navigation" aria-label="main navigation">
-        <div class="navbar-brand">
-            <a href="/" class="navbar-item">
-                <figure class="image">
-                    <img id="logo" src="../images/magi2021banner_dark.png">
-                </figure>
-            </a>
-            <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="magiNavbar">
-                <span aria-hidden="true"></span>
-                <span aria-hidden="true"></span>
-                <span aria-hidden="true"></span>
-            </a>
-        </div>
-        <div id="magiNavbar" class="navbar-menu">
-            <div class="navbar-start">
-                <a class="navbar-item" href="/api.html">
-                    Docs/API
-                </a>
-            </div>
-            <div class="navbar-end">
-                <a class="navbar-item" href="/wallet.html">
-                    Online wallet
-                </a>
+    <head>
+        <meta charset="utf-8">
+        <meta name="robots" content="index, follow">
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <meta name="language" content="English">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=2">
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png?v=2">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png?v=2">
+        <link rel="manifest" href="/site.webmanifest?v=2">
+        <link rel="mask-icon" href="/safari-pinned-tab.svg?v=2" color="#5ac2ff">
+        <link rel="shortcut icon" href="/favicon.ico?v=2">
+        <meta name="msapplication-TileColor" content="#2d89ef">
+        <meta name="theme-color" content="#ffffff">
+        <title>Coin Magi | Developer documentation</title>
+        <meta name="apple-mobile-web-app-title" content="Coin Magi | Developer documentation">
+        <meta name="application-name" content="Coin Magi | Developer documentation">
+        <meta name="twitter:title" content="Coin Magi | Developer documentation">
+        <meta property="og:title" content="Coin Magi | Developer documentation">
+        <meta name="description" content="View developer documentation of the Coin Magi 2021 APIs.">
+        <meta name="twitter:description" content="View developer documentation of the Coin Magi 2021 APIs.">
+        <meta property="og:description" content="View developer documentation of the Coin Magi 2021 APIs.">
+        <meta name="keywords" content="Coin Magi, XMG, Duino Coin, DUCO">
+        <meta name="author" content="revox from the Duino-Coin Team">
+        <meta property="og:url" content="https://magi.duinocoin.com">
+        <meta name="msapplication-TileColor" content="#6ac2ee">
+        <meta name="theme-color" content="#6ac2ee">
+        <meta name="twitter:site" content="@DuinoCoin">
+        <meta name="twitter:image" content="https://magi.duinocoin.com/images/banner_docs.png">
+        <meta property="og:image" content="https://magi.duinocoin.com/images/banner_docs.png">
+        <meta property="og:image:url" content="https://magi.duinocoin.com/images/banner_docs.png">
+        <meta name="twitter:card" content="summary_large_image">
+        <link rel="stylesheet" href="https://bulma.io/css/bulma-docs.min.css?v=202109240709">
+        <link rel="stylesheet" href="https://wallet.duinocoin.com/css/bulma-prefers-dark.min.css">
+        <script src="https://wallet.duinocoin.com/js/jquery-3.6.0.min.js"></script>
+        <link rel="stylesheet" href="css/styles.css">
+        <script src="https://wallet.duinocoin.com/js/fontawesome.js"></script>
+        <link rel="stylesheet" href="css/github.css" media="(prefers-color-scheme: light)">
+        <link rel="stylesheet" href="css/monokai.css" media="(prefers-color-scheme: dark)">
+        <script src="js/rainbow.js"></script>
+    </head>
+    <body>
+        <div id="loader-wrapper">
+            <div class="load">
+                <img class="img-load" src="../images/magi2021_light.png">
+                <p class="has-text-centered">
+                    by <b>Duino-Coin</b>
+                </p>
             </div>
         </div>
-    </nav>
-    <section class="section">
-        <div class="container">
-            <div class="columns is-multiline">
-                <div class="column">
-                    <div class="box">
-                        <div class="columns">
-                            <div class="column">
-                                <p class="heading">
-                                    Magi troubleshooting
-                                </p>
-                                <div class="content">
-                                    <ul>
-                                        <li>
-                                            Coming soon
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="column">
-                                <p class="heading">
-                                    Magi Python library (RPC)
-                                </p>
-                                <div class="content">
-                                    <ul>
-                                        <li>
-                                            <a href="#install">
-                                                Installation & basic usage
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#wallet">
-                                                Getting a wallet
-                                            </a>
-                                        </li>
-
-                                        <li>
-                                            <a href="#send">
-                                                Sending Magi
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#other">
-                                                Other functions
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="column">
-                                <p class="heading">
-                                    Magi online REST API
-                                </p>
-                                <div class="content">
-                                    <ul>
-                                        <li>
-                                            Coming soon
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+        <nav class="navbar" role="navigation" aria-label="main navigation">
+            <div class="navbar-brand">
+                <a href="/" class="navbar-item">
+                    <figure class="image">
+                        <img id="logo" src="../images/magi2021banner_dark.png">
+                    </figure>
+                </a>
+                <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="magiNavbar">
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                </a>
+            </div>
+            <div id="magiNavbar" class="navbar-menu">
+                <div class="navbar-start">
+                    <a class="navbar-item" href="/api.html">
+                        Docs/API
+                    </a>
                 </div>
-                <div class="column is-full">
-                    <div class="box">
-                        <p class="divider title is-size-5">
-                            MAGI PYTHON LIBRARY (RPC)
-                        </p>
-                        <p class="divider heading is-size-6" id="install">
-                            Installation & basic usage
-                        </p>
-                        <div class="content">
-                            Because Magi lacks any new APIs or libraries, I've decided to finally create one myself for Python 3.<br>
-                            Firstly <b>install the python-bitcoinrpc package</b>:
-                            <pre><code data-language="python">pip install python-bitcoinrpc</code></pre>
-
+                <div class="navbar-end">
+                    <a class="navbar-item" href="/wallet.html">
+                        Online wallet
+                    </a>
+                </div>
+            </div>
+        </nav>
+        <section class="section">
+            <div class="container">
+                <div class="columns is-multiline">
+                    <div class="column is-full">
+                        <div class="box">
+                            <details>
+                            <summary>
+                            <span class="title is-size-6">
+                                MAGI PYTHON LIBRARY (RPC)
+                            </span><br>
+                            <span class="subtitle is-size-6">
+                                Easy to use Python 3 library for interacting with the Magi wallet
+                            </span>
+                            </summary>
+                            <p class="divider heading is-size-6" id="install">
+                                Installation & basic usage
+                            </p>
+                            <div class="content">
+                                Because Magi lacks any new APIs or libraries, I've decided to finally create one myself for Python 3.<br>
+                                Firstly <b>install python-bitcoinrpc and requests</b>:
+                            <pre><code data-language="python">pip install python-bitcoinrpc requests</code></pre>
                             Then you can
                             <b>download the
-                                <a href="https://github.com/revoxhere/magi-rest-api/blob/main/magilib.py" target="_blank">magilib.py</a>
-                                library</b>
+                            <a href="https://github.com/revoxhere/magi-rest-api/blob/main/magilib.py" target="_blank">magilib.py</a>
+                            library</b>
                             and place it in the same folder in which you want to create your Python script.<br><br>
                             If you intend on using the library with your <b>local Magi wallet</b>,
                             open your <b>magi.conf</b> file (<code>.magi/magi.conf</code> when using Linux)
                             and <b>enable the RPC server</b>:
-                            <pre><code data-language="python">listen = 1
-server = 1
-rpcallowip = 127.0.0.1
-rpcport = 8232
-rpcuser = username
-rpcpassword = password</code></pre>
-
+                                                            <pre><code data-language="python">listen = 1
+                                    server = 1
+                                    rpcallowip = 127.0.0.1
+                                    rpcport = 8232
+                                    rpcuser = username
+                            rpcpassword = password</code></pre>
                             To use the Python library, simply <b>import it first</b>:
-                            <pre><code data-language="python">import magilib</code></pre>
-
-                            And create a magi instance (<b>note: your Magi wallet must be running</b>):
-                            <pre><code data-language="python">magi = magilib.rvxMagi("username", "password", ip="127.0.0.1:8232") # default IP</code></pre>
-                            Summing up, a simple program that shows wallet stats will look like this:
-                            <pre><code data-language="python">import magilib
-magi = magilib.rvxMagi("username", "password")
-print(magi.statistics())</code></pre>
-                        </div>
-                        <p class="divider heading is-size-6" id="wallet">
-                            Getting a wallet (using the library)
-                        </p>
-                        <div class="content">
-                            You can easily create a wallet with the <b>create_wallet</b> function:
-                            <pre><code data-language="python">import magilib
-magi = magilib.rvxMagi("username", "password")
-print(magi.create_wallet()) # returns a tuple with wallet address and the autogenerated label</code></pre>
-
-                            To name your wallet (give it a label), simply put your desired label as an argument:
-                            <pre><code data-language="python">print(magi.create_wallet("myCoolWallet")) # returns a tuple with wallet address and the label</code></pre>
-                        </div>
-                        <p class="divider heading is-size-6" id="send">
-                            Sending Magi (using the library)
-                        </p>
-                        <div class="content">
-                            Sending funds is also very easy - use the <code data-language="python">magi.send(from_address, to_address, amount)</code> function to do so:
-                            <pre><code data-language="python">import magilib
-magi = magilib.rvxMagi("username", "password")
-print(magi.send("myCoolWallet", "95JLhkyWVDce5D17LyApULc5YC4vrVzaio", 0.5)) # returns the TXID</code></pre>
-
-                            To add a memo (<b>visible only locally!</b>), pass it as an argument too:
-                            <pre><code data-language="python">print(magi.send("myCoolWallet", "95JLhkyWVDce5D17LyApULc5YC4vrVzaio", 0.5, "Kolka payment!!!"))</code></pre>
-
-                            Don't want to subtract the transaction fee from the amount? No problem:
-                            <pre><code data-language="python">print(magi.send("myCoolWallet", "95JLhkyWVDce5D17LyApULc5YC4vrVzaio", 0.5, subtract_fee=False))</code></pre>
-
-                            Want a custom transaction fee? There you go:
-                            <pre><code data-language="python">print(magi.send("myCoolWallet", "95JLhkyWVDce5D17LyApULc5YC4vrVzaio", amount=0.5, txfee=0.01))</code></pre>
-
-                            For the <code data-language="python">from_address</code> you can either use the wallet address or the wallet label - the library will automatically convert it.
-                        </div>
-                        <p class="divider heading is-size-6" id="other">
-                            Other functions
-                        </p>
-                        <div class="content">
-                            <ul>
-                                <li>
-                                    List all wallet accounts:
-                                    <pre><code data-language="python">magi.get_wallets()</code></pre>
-                                    Example output:
-                                    <pre><code data-language="python">>>> print(magi.get_wallets())
-[
-    {
-        'flags': 'coins received',
-        'address': '95JLhkyWVDce5D17LyApULc5YC4vrVzaio',
-        'account': 'revox',
-        'amount': Decimal('2893.28250294'),
-        'confirmations': 1260
-    }
-]</code></pre>
-                                </li>
-                                <li>
-                                    Get label (name) of wallet address:
-                                    <pre><code data-language="python">magi.get_account_name(address)</code></pre>
-                                    Example output:
-                                    <pre><code data-language="python">>>> print(magi.get_account_name("95JLhkyWVDce5D17LyApULc5YC4vrVzaio"))
-revox</code></pre>
-                                </li>
-                                <li>
-                                    Get address of wallet name (label):
-                                    <pre><code data-language="python">magi.get_account_address(address)</code></pre>
-                                    Example output:
-                                    <pre><code data-language="python">>>> print(magi.get_account_address("revox"))
+                        <pre><code data-language="python">import magilib</code></pre>
+                        And create a magi instance (<b>note: your Magi wallet must be running</b>):
+                    <pre><code data-language="python">magi = magilib.rvxMagi("username", "password", ip="127.0.0.1:8232") # default IP</code></pre>
+                    Summing up, a simple program that shows wallet stats will look like this:
+                                                    <pre><code data-language="python">import magilib
+                            magi = magilib.rvxMagi("username", "password")
+                    print(magi.statistics())</code></pre>
+                </div>
+                <p class="divider heading is-size-6" id="wallet">
+                    Getting a wallet (using the library)
+                </p>
+                <div class="content">
+                    You can easily create a wallet with the <b>create_wallet</b> function:
+                                                    <pre><code data-language="python">import magilib
+                            magi = magilib.rvxMagi("username", "password")
+                    print(magi.create_wallet()) # returns a tuple with wallet address and the autogenerated label</code></pre>
+                    To name your wallet (give it a label), simply put your desired label as an argument:
+                <pre><code data-language="python">print(magi.create_wallet("myCoolWallet")) # returns a tuple with wallet address and the label</code></pre>
+            </div>
+            <p class="divider heading is-size-6" id="send">
+                Sending Magi (using the library)
+            </p>
+            <div class="content">
+                Sending funds is also very easy - use the <code data-language="python">magi.send(from_address, to_address, amount)</code> function to do so:
+                                                <pre><code data-language="python">import magilib
+                        magi = magilib.rvxMagi("username", "password")
+                print(magi.send("myCoolWallet", "95JLhkyWVDce5D17LyApULc5YC4vrVzaio", 0.5)) # returns the TXID</code></pre>
+                To add a memo (<b>visible only locally!</b>), pass it as an argument too:
+            <pre><code data-language="python">print(magi.send("myCoolWallet", "95JLhkyWVDce5D17LyApULc5YC4vrVzaio", 0.5, "Kolka payment!!!"))</code></pre>
+            Don't want to subtract the transaction fee from the amount? No problem:
+        <pre><code data-language="python">print(magi.send("myCoolWallet", "95JLhkyWVDce5D17LyApULc5YC4vrVzaio", 0.5, subtract_fee=False))</code></pre>
+        Want a custom transaction fee? There you go:
+    <pre><code data-language="python">print(magi.send("myCoolWallet", "95JLhkyWVDce5D17LyApULc5YC4vrVzaio", amount=0.5, txfee=0.01))</code></pre>
+    For the <code data-language="python">from_address</code> you can either use the wallet address or the wallet label - the library will automatically convert it.
+</div>
+<p class="divider heading is-size-6" id="other">
+    Other functions
+</p>
+<div class="content">
+    <ul>
+        <li>
+            List all wallet accounts:
+        <pre><code data-language="python">magi.get_wallets()</code></pre>
+        Example output:
+                                                <pre><code data-language="python">>>> print(magi.get_wallets())
+                [
+                    {
+                        'flags': 'coins received',
+                        'address': '95JLhkyWVDce5D17LyApULc5YC4vrVzaio',
+                        'account': 'revox',
+                        'amount': Decimal('2893.28250294'),
+                        'confirmations': 1260
+                    }
+        ]</code></pre>
+    </li>
+    <li>
+        Get label (name) of wallet address:
+    <pre><code data-language="python">magi.get_account_name(address)</code></pre>
+    Example output:
+                                            <pre><code data-language="python">>>> print(magi.get_account_name("95JLhkyWVDce5D17LyApULc5YC4vrVzaio"))
+    revox</code></pre>
+</li>
+<li>
+    Get address of wallet name (label):
+<pre><code data-language="python">magi.get_account_address(address)</code></pre>
+Example output:
+                                        <pre><code data-language="python">>>> print(magi.get_account_address("revox"))
 95JLhkyWVDce5D17LyApULc5YC4vrVzaio</code></pre>
-                                </li>
-                                <li>
-                                    Get last transactions of wallet (label or address):
-                                    <pre><code data-language="python">magi.get_transactions(wallet, limit=10)</code></pre>
-                                    Example output:
-                                    <pre><code data-language="python">>>> print(magi.get_transactions("revox", 2))
-[
-    {
-        'account': 'revox',
-        'address': '95JLhkyWVDce5D17LyApULc5YC4vrVzaio',
-        'category': 'receive',
-        'amount': Decimal('50.75197137'),
-        'confirmations': 99,
-        'blockhash': '17160e51e06ef45098d826524b4e6157db3657531dd9870aa098db998d3508c3',
-        'blockindex': 3,
-        'blocktime': 1634581200,
-        'txid': 'fa58f34b7ae81df04c1e43c6720509e3c1a915dab896037990a57f31671230bf',
-        'time': 1634581143, 'timereceived': 1634581143
-    },
-    {
-        'account': 'revox', 
-        'address': '95JLhkyWVDce5D17LyApULc5YC4vrVzaio',
-        'category': 'receive',
-        'amount': Decimal('58.37396298'),
-        'confirmations': 7,
-        'blockhash': 'caf8e656d84d85dce07ef2c060cd44f63797bc863f215615372d8df09e284781',
-        'blockindex': 2,
-        'blocktime': 1634587424, 
-        'txid': '55b23d724f36c427fc73b17aea15e166073265daf1b87272788c52b91796fb31', 
-        'time': 1634587424,
-        'timereceived': 1634587435
-    }
+</li>
+<li>
+Get last transactions of wallet (label or address):
+<pre><code data-language="python">magi.get_transactions(wallet, limit=10)</code></pre>
+Example output:
+                                        <pre><code data-language="python">>>> print(magi.get_transactions("revox", 2))
+    [
+        {
+            'account': 'revox',
+            'address': '95JLhkyWVDce5D17LyApULc5YC4vrVzaio',
+            'category': 'receive',
+            'amount': Decimal('50.75197137'),
+            'confirmations': 99,
+            'blockhash': '17160e51e06ef45098d826524b4e6157db3657531dd9870aa098db998d3508c3',
+            'blockindex': 3,
+            'blocktime': 1634581200,
+            'txid': 'fa58f34b7ae81df04c1e43c6720509e3c1a915dab896037990a57f31671230bf',
+            'time': 1634581143, 'timereceived': 1634581143
+        },
+        {
+            'account': 'revox', 
+            'address': '95JLhkyWVDce5D17LyApULc5YC4vrVzaio',
+            'category': 'receive',
+            'amount': Decimal('58.37396298'),
+            'confirmations': 7,
+            'blockhash': 'caf8e656d84d85dce07ef2c060cd44f63797bc863f215615372d8df09e284781',
+            'blockindex': 2,
+            'blocktime': 1634587424, 
+            'txid': '55b23d724f36c427fc73b17aea15e166073265daf1b87272788c52b91796fb31', 
+            'time': 1634587424,
+            'timereceived': 1634587435
+        }
 ]</code></pre>
-                                </li>
-                                <li>
-                                    Create a wallet account
-                                    <pre><code data-language="python">magi.create_wallet(label)</code></pre>
-                                    Example output:
-                                    <pre><code data-language="python">>>> print(magi.create_wallet("myCoolUsername"))
+</li>
+<li>
+Create a wallet account
+<pre><code data-language="python">magi.create_wallet(label)</code></pre>
+Example output:
+                                        <pre><code data-language="python">>>> print(magi.create_wallet("myCoolUsername"))
 ('9R7TrBNPksW8AxJK5fxHYZzrk7bKEhFEPe', 'myCoolUsername')</code></pre>
-                                </li>
-                                <li>
-                                    Send Magi
-                                    <pre><code data-language="python">magi.send(sender_account, recipient_address, amount, memo="none", txfee=0.005, subtract_fee=True)</code></pre>
-                                </li>
-                                <li>
-                                    Get current Magi price
-                                    <pre><code data-language="python">magi.get_price()</code></pre>
-                                    Example output:
-                                    <pre><code data-language="python">>>> print(magi.get_price())
-{
-    'btcpop': 0.00245908, 
-    'ducoexchange': 0.00059835,
-    'moondex': 0,
-    'max': 0.00245908
-}</code></pre>
-                                </li>
-                                <li>
-                                    Get network statistics
-                                    <pre><code data-language="python">magi.statistics()</code></pre>
-                                    Example output:
-                                    <pre><code data-language="python">>>> print(magi.statistics())
-{
-    'difficulty': {
-        'pow': 1.45384564, 
-        'pos': 0.00233533
-    }, 
-    'blocktx': 0, # transactions in mempool
-    'blocks': 3239881,
-    'reward': 20.84243837, # block reward
-    'hashrate': 24918734.0, # network hashrate
-    'price': {
-        'btcpop': 0.00245908,
-        'ducoexchange': 0.00059835, 
+</li>
+<li>
+Send Magi
+<pre><code data-language="python">magi.send(sender_account, recipient_address, amount, memo="none", txfee=0.005, subtract_fee=True)</code></pre>
+</li>
+<li>
+Get current Magi price
+<pre><code data-language="python">magi.get_price()</code></pre>
+Example output:
+                                        <pre><code data-language="python">>>> print(magi.get_price())
+    {
+        'btcpop': 0.00245908, 
+        'ducoexchange': 0.00059835,
         'moondex': 0,
         'max': 0.00245908
-    },
-    'stake_interest': 0.03806139,
-    'hours_to_stake': 4.0 # mPoS II
 }</code></pre>
-                                </li>
-                                <li>
-                                    Get balance of an account
-                                    <pre><code data-language="python">magi.get_balance(wallet)</code></pre>
-                                    Example output:
-                                    <pre><code data-language="python">>>> print(magi.get_balance("revox"))
+</li>
+<li>
+Get network statistics
+<pre><code data-language="python">magi.statistics()</code></pre>
+Example output:
+                                        <pre><code data-language="python">>>> print(magi.statistics())
+    {
+        'difficulty': {
+            'pow': 1.45384564, 
+            'pos': 0.00233533
+        }, 
+        'blocktx': 0, # transactions in mempool
+        'blocks': 3239881,
+        'reward': 20.84243837, # block reward
+        'hashrate': 24918734.0, # network hashrate
+        'price': {
+            'btcpop': 0.00245908,
+            'ducoexchange': 0.00059835, 
+            'moondex': 0,
+            'max': 0.00245908
+        },
+        'stake_interest': 0.03806139,
+        'hours_to_stake': 4.0 # mPoS II
+}</code></pre>
+</li>
+<li>
+Get balance of an account
+<pre><code data-language="python">magi.get_balance(wallet)</code></pre>
+Example output:
+                                        <pre><code data-language="python">>>> print(magi.get_balance("revox"))
 2951.65646592</code></pre>
-                                </li>
-                                <li>
-                                    Get wallet sync status (WIP)
-                                    <pre><code data-language="python">magi.sync_status()</code></pre>
-                                    Example output:
-                                    <pre><code data-language="python">>>> print(magi.sync_status())
-Wallet in sync (100% of 3239864 synced)
+</li>
+<li>
+Get wallet sync status (WIP)
+<pre><code data-language="python">magi.sync_status()</code></pre>
+Example output:
+                                        <pre><code data-language="python">>>> print(magi.sync_status())
+    Wallet in sync (100% of 3239864 synced)
 (0, 3239864)</code></pre>
-                                </li>
-                                <li>
-                                    Get transaction by TXID (hash)
-                                    <pre><code data-language="python">magi.transaction_by_txid(txid)</code></pre>
-                                    Example output:
-                                    <pre><code data-language="python">>>> print(magi.transaction_by_txid("fa58f34b7ae81df04c1e43c6720509e3c1a915dab896037990a57f31671230bf"))
-{
-    'datetime': '2021-10-18 18:19:03',
-    'recipient': 'revox (95JLhkyWVDce5D17LyApULc5YC4vrVzaio)',
-    'amount': 50.75197137,
-    'hash': 'fa58f34b7ae81df04c1e43c6720509e3c1a915dab896037990a57f31671230bf',
-    'memo': 'none', 
-    'fee': 'unknown',
-    'sender': 'unknown',
-    'confirmations': 110,
-    'block': '17160e51e06ef45098d826524b4e6157db3657531dd9870aa098db998d3508c3',
-    'currency': 'XMG'
+</li>
+<li>
+Get transaction by TXID (hash)
+<pre><code data-language="python">magi.transaction_by_txid(txid)</code></pre>
+Example output:
+                                        <pre><code data-language="python">>>> print(magi.transaction_by_txid("fa58f34b7ae81df04c1e43c6720509e3c1a915dab896037990a57f31671230bf"))
+    {
+        'datetime': '2021-10-18 18:19:03',
+        'recipient': 'revox (95JLhkyWVDce5D17LyApULc5YC4vrVzaio)',
+        'amount': 50.75197137,
+        'hash': 'fa58f34b7ae81df04c1e43c6720509e3c1a915dab896037990a57f31671230bf',
+        'memo': 'none', 
+        'fee': 'unknown',
+        'sender': 'unknown',
+        'confirmations': 110,
+        'block': '17160e51e06ef45098d826524b4e6157db3657531dd9870aa098db998d3508c3',
+        'currency': 'XMG'
 }</code></pre>
-                                </li>
-                                <li>
-                                    Check if wallet (label) already exists
-                                    <pre><code data-language="python">magi.wallet_exists(label)</code></pre>
-                                    Example output:
-                                    <pre><code data-language="python">>>> print(magi.wallet_exists("revox"))
+</li>
+<li>
+Check if wallet (label) already exists
+<pre><code data-language="python">magi.wallet_exists(label)</code></pre>
+Example output:
+                                        <pre><code data-language="python">>>> print(magi.wallet_exists("revox"))
 True</code></pre>
-                                </li>
-                                <li>
-                                    Get basic account (label/wallet) data
-                                    <pre><code data-language="python">magi.account_data(label)</code></pre>
-                                    Example output:
-                                    <pre><code data-language="python">>>> print(magi.account_data("revox"))
-{
-    'username': 'revox',
-    'address': '95JLhkyWVDce5D17LyApULc5YC4vrVzaio',
-    'balance': 2951.65646592,
-    'currency': 'XMG'
+</li>
+<li>
+Get basic account (label/wallet) data
+<pre><code data-language="python">magi.account_data(label)</code></pre>
+Example output:
+                                        <pre><code data-language="python">>>> print(magi.account_data("revox"))
+    {
+        'username': 'revox',
+        'address': '95JLhkyWVDce5D17LyApULc5YC4vrVzaio',
+        'balance': 2951.65646592,
+        'currency': 'XMG'
 }</code></pre>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <footer class="footer">
-        <div class="content has-text-centered is-size-7">
-            <b>Coin Magi 2021</b>
-            website by
-            <a href="https://revoxhere.github.io">
-                <b>Robert "revox" Piotrowski</b>
-            </a> from the
-            <b>Duino team</b>
-            2019-2021<br>
-            This page is open-source.
-            You can improve it
-            <a href="https://github.com/revoxhere/magi-website">
-                <b>here</b>
-            </a><br>
-            Made with
-            <a href="https://bulma.io">
-                <b>Bulma</b>
-            </a>
-        </div>
-    </footer>
+</li>
+</ul>
+</div>
+</details>
+</div>
+</div>
+<div class="column is-full">
+<div class="box">
+<details>
+<summary>
+<span class="title is-size-6">
+MAGI ONLINE REST API
+</span><br>
+<span class="subtitle is-size-6">
+API calls you can use to integrate Magi into your app without the need of any hosting
+</span>
+</summary>
+<p class="divider heading is-size-6" id="rest-usage">
+Usage
+</p>
+<div class="content">
+Usage of our API is really simple - just create a GET request to the desired endpoint. For example, to get the Magi network stats, just open the <code><a href="https://magi.duinocoin.com/statistics" target="_blank">magi.duinocoin.com/statistics</a></code> route:
+                                <pre><code data-language="json">{
+  "result": {
+    "blocks": 3252534,
+    "blocktx": 0,
+    "difficulty": {
+      "pos": 0.00389869,
+      "pow": 0.51841158
+    },
+    "hashrate": 8657484,
+    "hours_to_stake": "unknown",
+    "price": {
+      "btcpop": 0.00243984,
+      "ducoexchange": 0.00032753,
+      "max": 0.00243984,
+      "moondex": 0
+    },
+    "reward": 19.93486563,
+    "stake_interest": 0.03930132,
+    "total_balance": 50257.69530399,
+    "users": 810
+  },
+  "success": true
+}</code></pre>
+Python example:
+                            <pre><code data-language="python">import requests
+print(requests.get("https://magi.duinocoin.com/statistics").json())</code></pre>
+<p class="divider heading is-size-6" id="endpoints">
+Available endpoints
+</p>
+<div class="content">
+<details>
+<summary>
+<span class="tag is-success">GET</span>
+<code><a href="https://magi.duinocoin.com/statistics" target="_blank">/statistics</a></code>
+- info/stats related to the Magi network
+</summary>
+Example output:
+                                    <pre><code data-language="json">{
+  "result": {
+    "blocks": 3252534,
+    "blocktx": 0,
+    "difficulty": {
+      "pos": 0.00389869,
+      "pow": 0.51841158
+    },
+    "hashrate": 8657484,
+    "hours_to_stake": "unknown",
+    "price": {
+      "btcpop": 0.00243984,
+      "ducoexchange": 0.00032753,
+      "max": 0.00243984,
+      "moondex": 0
+    },
+    "reward": 19.93486563,
+    "stake_interest": 0.03930132,
+    "total_balance": 50257.69530399,
+    "users": 810
+  },
+  "success": true
+}</code></pre>
+</details>
+<details>
+<summary>
+<span class="tag is-success">GET</span>
+<code><a href="https://magi.duinocoin.com/all_balances" target="_blank">/all_balances</a></code>
+- return all users and their balances (above 0.0) registered on magi.duinocoin.com
+</summary>
+Example output:
+                                    <pre><code data-language="json">{
+  "result": {
+    "revox": {
+      "address": "95JLhkyWVDce5D17LyApULc5YC4vrVzaio",
+      "balance": 34631.39634922,
+      "currency": "XMG",
+      "username": "revox"
+    },
+    "revox2": {
+      "address": "9Nnp5tCuDQ6gFCPx1t8vzg3L31yDnhBNzQ",
+      "balance": 0.0049,
+      "currency": "XMG",
+      "username": "revox2"
+    }
+  },
+  "success": true
+}</code></pre>
+</details>
+<details>
+<summary>
+<span class="tag is-success">GET</span>
+<code><a href="https://magi.duinocoin.com/transactions/38712cabb97235257cfbf42b0e20b8533722d86d3f95809ac164c6a11de6a9f2" target="_blank">/transactions/<b>TXID</b></a></code>
+- info about a transaction by its <b>TXID</b>
+</summary>
+Example output:
+                                    <pre><code data-language="json">{
+  "result": {
+    "amount": 2.995,
+    "block": "01dc6a675f999cc3b55fdae4f874ecc251d929f644535445b742c14cfcf09f37",
+    "confirmations": 43,
+    "currency": "XMG",
+    "datetime": "2021-10-29 10:14:02",
+    "fee": 0.0002,
+    "hash": "38712cabb97235257cfbf42b0e20b8533722d86d3f95809ac164c6a11de6a9f2",
+    "memo": "none",
+    "recipient": "revox (9GuFv2TgZn7gHWD3fR3YUN9J9fRVhHKpxx)",
+    "sender": "unknown"
+  },
+  "success": true
+}</code></pre>
+</details>
+<details>
+<summary>
+<span class="tag is-success">GET</span>
+<code><a href="https://magi.duinocoin.com/user_transactions/revox2" target="_blank">/user_transactions/<b>USERNAME</b></a></code>
+- return last transactions of <b>USERNAME</b>
+</summary>
+Example output:
+                                    <pre><code data-language="json">{
+  "result": [
+    {
+      "amount": 2.995,
+      "confirmations": 16216,
+      "currency": "XMG",
+      "datetime": "2021-10-15 21:12:04",
+      "fee": 0.0001,
+      "hash": "df48b95a8c03f747e691efa35103a681dcd94382fddd8fceb232861ca1a647cd",
+      "memo": "None",
+      "recipient": "9RTb3ikRrWExsF6fis85g7vKqU1tQYVFuR",
+      "sender": "revox2"
+    },
+    {
+      "amount": 0.995,
+      "confirmations": 16138,
+      "currency": "XMG",
+      "datetime": "2021-10-15 22:44:56",
+      "fee": 0.0001,
+      "hash": "502d912e6b3720dd13a92906ed59bf9d0c57482a42119c3333f7c1c157e8ad23",
+      "memo": "hmmm",
+      "recipient": "revox3",
+      "sender": "revox2"
+    },
+  ],
+  "success": true
+}</code></pre>
+</details>
+<details>
+<summary>
+<span class="tag is-success">GET</span>
+<code><a href="https://magi.duinocoin.com/users/revox" target="_blank">/users/<b>USERNAME</b></a></code>
+- return balance, magi price and last transactions of <b>USERNAME</b>
+</summary>
+Example output:
+                                    <pre><code data-language="json">{
+  "result": {
+    "balance": {
+      "address": "95JLhkyWVDce5D17LyApULc5YC4vrVzaio",
+      "balance": 34631.39634922,
+      "currency": "XMG",
+      "username": "revox"
+    },
+    "price": {
+      "btcpop": 0.00244636,
+      "ducoexchange": 0.00032753,
+      "max": 0.00244636,
+      "moondex": 0
+    },
+    "transactions": [
+      {
+        "amount": 251.78871502,
+        "confirmations": 1044,
+        "currency": "XMG",
+        "datetime": "2021-10-28 14:05:38",
+        "fee": 0,
+        "hash": "5558f12bc6b6d9743e994e42f5107db32491219d5e907b586fc7a4e3b713ba7a",
+        "memo": "none",
+        "recipient": "revox",
+        "sender": null
+      },
+      {
+        "amount": 81.995,
+        "confirmations": 1025,
+        "currency": "XMG",
+        "datetime": "2021-10-28 14:41:08",
+        "fee": 0.0001,
+        "hash": "405c68a5c1c68c3b262a06a277f8da1ab5a3698fcceb8dfe133f48d74ece65eb",
+        "memo": "DUCO Exchange payment",
+        "recipient": "Raidz",
+        "sender": "revox"
+      }
+    ]
+  },
+  "success": true
+}</code></pre>
+</details>
+<details>
+<summary>
+<span class="tag is-success">GET</span>
+<code><a href="https://magi.duinocoin.com/balances/revox2" target="_blank">/balances/<b>USERNAME</b></a></code>
+- return balance of <b>USERNAME</b>
+</summary>
+Example output:
+                                    <pre><code data-language="json">{
+  "result": {
+    "address": "9Nnp5tCuDQ6gFCPx1t8vzg3L31yDnhBNzQ",
+    "balance": 0.0049,
+    "currency": "XMG",
+    "username": "revox2"
+  },
+  "success": true
+}</code></pre>
+</details>
+<details>
+<summary>
+<span class="tag is-success">GET</span>
+<code>/transaction/<b>TX_DATA</b></code>
+- create a transaction with <b>TX_DATA</b>
+</summary>
+TX_DATA is a set of URL arguments containing:
+<div class="container">
+<ul>
+<li><code>username</code> - senders username</li>
+<li><code>password</code> - senders password</li>
+<li><code>recipient</code> - recipients username/address</li>
+<li><code>amount</code> - amount to be transferred</li>
+<li><code>memo</code> - (optional) transaction comment</li>
+</ul>
+</div>
+Example output:
+                                    <pre><code data-language="json">{
+  "result": "OK,Successfully transferred funds,df48b95a8c03f747e691efa35103a681dcd94382fddd8fceb232861ca1a647cd",
+  "success": true
+}</code></pre>
+</details>
+</div>
+</details>
+</div>
+</div>
+</div>
+</section>
+<footer class="footer">
+<div class="content has-text-centered is-size-7">
+<b>Coin Magi 2021-2022</b>
+website by
+<a href="https://revoxhere.github.io">
+<b>Robert "revox" Piotrowski</b>
+</a> from the
+<b>Duino team</b>
+2019-2022<br>
+This page is open-source.
+You can improve it
+<a href="https://github.com/revoxhere/magi-website">
+<b>here</b>
+</a><br>
+Made with
+<a href="https://bulma.io">
+<b>Bulma</b>
+</a>
+</div>
+</footer>
 </body>
 <script src="js/main.js"></script>
-
 </html>
