@@ -61,10 +61,10 @@ function fill_stats() {
 
                 update_element("diff_pos", round_to(4, data.result.difficulty.pos));
                 update_element("diff_posm", round_to(4, data.result.difficulty.pos));
-                update_element("diff_pow", round_to(3, data.result.difficulty.pow));
+                update_element("diff_pow", round_to(2, data.result.difficulty.pow));
                 update_element("diff_powm", round_to(3, data.result.difficulty.pow));
 
-                update_element("price", `$${round_to(4, data.result.price.max)}`);
+                update_element("price", `$${round_to(5, data.result.price.max)}`);
                 maxprice = data.result.price.max;
                 delete data.result.price.max;
                 for (price in data.result.price) 
@@ -74,6 +74,10 @@ function fill_stats() {
                 update_element("reward", `<b>${round_to(2, data.result.reward)} XMG</b>`);
 
                 update_element("blocks", data.result.blocks);
+
+                update_element("users", data.result.users);
+
+                update_element("totalbalance", round_to(2, data.result["total_balance"]));
 
                 if (data.result.blocktx === 0) {
                     update_element("pendingtx", `NO PENDING TRANSACTIONS`);
@@ -116,28 +120,28 @@ function btnsearch() {
                         </p>
                         <div class="columns is-size-6 is-multiline is-gapless has-text-left">
                             <div class="column is-full mt-1">
-                                <i class="mdi mdi-numeric-${last_num}-circle"></i>
+                                <i class="mdi mdi-numeric-${last_num}-circle" style="color:#6ac2ee"></i>
                                 <span>Amount: <b>${data.result.amount} ${data.result.currency}</b>
-                                (<b>${fee}</b> fee)</span>
+                                (<b>${fee}</b> tx fee)</span>
                             </div>
                             <div class="column is-full mt-1">
-                                <i class="mdi mdi-account-arrow-right"></i>
+                                <i class="mdi mdi-account-arrow-right" style="color:#6ac2ee"></i>
                                 <span>First account: <b><monospace>${data.result.sender}</monospace></b></span>
                             </div>
                             <div class="column is-full mt-1">
-                                <i class="mdi mdi-account-arrow-left"></i>
+                                <i class="mdi mdi-account-arrow-left" style="color:#6ac2ee"></i>
                                 <span>Second account: <b><monospace>${data.result.recipient}</monospace></b></span>
                             </div>
                             <div class="column is-full mt-1">
-                                <i class="mdi mdi-message"></i>
+                                <i class="mdi mdi-message" style="color:#6ac2ee"></i>
                                 <span>Memo: <b><i>${data.result.memo}</i></b></span>
                             </div>
                             <div class="column is-full mt-1">
-                                <i class="mdi mdi-clock"></i>
+                                <i class="mdi mdi-clock" style="color:#6ac2ee"></i>
                                 <span>Timestamp: <b>${data.result.datetime}</b></span>
                             </div>
                             <div class="column is-full mt-1">
-                                <i class="mdi mdi-dots-grid"></i>
+                                <i class="mdi mdi-dots-grid" style="color:#6ac2ee"></i>
                                 <span>Block: <b><monospace>${data.result.block}</monospace></b></span>
                             </div>
                         </div>

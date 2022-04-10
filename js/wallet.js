@@ -64,9 +64,9 @@ function fetch_data(username) {
             update_element("username", `${data.balance.username}`);
             update_element("balance", `${balance} Σ`);
             update_element("balanceusd", `≈ $${balanceusd}`);
-            update_element("price_ducoe", `≈ $${round_to(4, data.price.ducoexchange)}`)
-            update_element("price_btcpop", `≈ $${round_to(4, data.price.btcpop)}`)
-            update_element("price_moondex", `≈ $${round_to(4, data.price.moondex)}`)
+            update_element("price_ducoe", `≈ $${round_to(7, data.price.ducoexchange)}`)
+            //update_element("price_btcpop", `≈ $${round_to(4, data.price.btcpop)}`)
+            //update_element("price_moondex", `≈ $${round_to(4, data.price.moondex)}`)
 
             transactions_html = "";
             data.transactions = data.transactions.reverse()
@@ -407,8 +407,6 @@ window.addEventListener('load', function() {
         if ($("#usernameinput").val() && $("#passwordinput").val()) {
             $("#loginbutton").addClass("is-loading")
             username = $("#usernameinput").val();
-            //trim the username field to remove extra spaces
-            username = username.replace(/^[ ]+|[ ]+$/g,'')
             password = $("#passwordinput").val();
             login(username, password);
         }
