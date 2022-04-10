@@ -3,7 +3,7 @@
 @import url('https://cdn.jsdelivr.net/npm/@creativebulma/bulma-divider@1.1.0/dist/bulma-divider.min.css');
 
 .news {
-    max-height: 5em;
+    max-height: 10em;
     width: 100%;
     top: 0;
     left: 0;
@@ -13,7 +13,7 @@
 }
 
 .iframe_container {
-    max-height: 5em;
+    max-height: 10em;
 }
 
 html {
@@ -47,6 +47,9 @@ body {
 }
 
 monospace {
+    overflow-wrap: break-word;
+    word-break: break-all;
+    display: inline-block;
     font-family: 'Noto Sans Mono', monospace !important;
 }
 
