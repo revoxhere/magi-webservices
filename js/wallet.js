@@ -65,6 +65,7 @@ function fetch_data(username) {
             update_element("balance", `${balance} Σ`);
             update_element("balanceusd", `≈ $${balanceusd}`);
             update_element("price_ducoe", `≈ $${round_to(7, data.price.ducoexchange)}`)
+            update_element("price_pancake", `≈ $${round_to(7, data.price.pancakeswap)}`)
             //update_element("price_btcpop", `≈ $${round_to(4, data.price.btcpop)}`)
             //update_element("price_moondex", `≈ $${round_to(4, data.price.moondex)}`)
 
