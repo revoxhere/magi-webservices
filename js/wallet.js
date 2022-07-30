@@ -60,9 +60,11 @@ function fetch_data(username) {
             data = data.result;
             address = data.balance.address;
             balance = data.balance.balance;
+            staked_balance = round_to(4,data.balance.staked_balance);
             balanceusd = round_to(4, balance * data.price.max);
             update_element("username", `${data.balance.username}`);
             update_element("balance", `${balance} Σ`);
+            update_element("staked_balance", `${staked_balance} Σ`);
             update_element("balanceusd", `≈ $${balanceusd}`);
             update_element("price_ducoe", `≈ $${round_to(7, data.price.ducoexchange)}`)
             update_element("price_pancake", `≈ $${round_to(7, data.price.pancakeswap)}`)
@@ -150,7 +152,7 @@ function stakeinfo() {
     $.getJSON('https://magi.duinocoin.com/statistics',
         function(data) {
             data = data.result;
-            update_element("stake_interest", data.stake_interest);
+            update_element("stake_interest", round_to(4, data.stake_interest) + " Σ");
             update_element("stake_hours", `~ ${data.hours_to_stake} hours`);
         }).fail(function() {
         console.log("Error getting stake info")
@@ -439,7 +441,7 @@ window.addEventListener('load', function() {
                     <input class="input" id="recipient" placeholder="e.g. revox or 9RTb3ikRrWExsF6fis85g7vKqU1tQYVFuR" type="text">
                 </div>
                 <div class="column is-full">
-                    <span class="heading">Amount (<span class="has-text-warning-dark">Note: a 0.05 XMG transaction fee will apply</span>)</span>
+                    <span class="heading">Amount (<span class="has-text-warning-dark">Note: a 0.005 XMG transaction fee will apply</span>)</span>
                     <input class="input" id="amount" placeholder="e.g. 3.1415" type="number" step="0.01" min="0.05">
                 </div>
                 <div class="column is-full">
