@@ -1,35 +1,41 @@
 let username, password, address, captcha, captchainfo, email, passwordConfirm;
 const api = "https://magi.duinocoin.com";
-if (!window.location.href.includes("magi.duinocoin.com")) window.location.href = "https://magi.duinocoin.com/";
+if (!window.location.href.includes("magi.duinocoin.com"))
+    window.location.href = "https://magi.duinocoin.com/";
 
 let adBlockEnabled = false;
-const googleAdUrl = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js';
-try { fetch(new Request(googleAdUrl)).catch(_ => adBlockEnabled = true) } catch (e) { adBlockEnabled = true }
+const googleAdUrl =
+    "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js";
+try {
+    fetch(new Request(googleAdUrl)).catch((_) => (adBlockEnabled = true));
+} catch (e) {
+    adBlockEnabled = true;
+}
 
-String.prototype.escape = function() {
+String.prototype.escape = function () {
     var tagsToReplace = {
-        '&': ' ',
-        '\\': ' ',
-        '/': ' ',
-        '(': ' ',
-        ')': ' ',
-        '`': ' ',
-        '<': ' ',
-        '>': ' '
+        "&": " ",
+        "\\": " ",
+        "/": " ",
+        "(": " ",
+        ")": " ",
+        "`": " ",
+        "<": " ",
+        ">": " ",
     };
-    return this.replace(/[&<>]/g, function(tag) {
+    return this.replace(/[&<>]/g, function (tag) {
         return tagsToReplace[tag] || tag;
     });
 };
 
 function update_element(element, value) {
     element = "#" + element;
-    old_value = $(element).text()
+    old_value = $(element).text();
 
     if ($("<div>" + value + "</div>").text() != old_value) {
-        $(element).fadeOut('fast', function() {
+        $(element).fadeOut("fast", function () {
             $(element).html(value);
-            $(element).fadeIn('fast');
+            $(element).fadeIn("fast");
         });
     }
 }
@@ -44,42 +50,52 @@ function scientific_prefix(prefix, value) {
     value = parseFloat(value);
     if (value / 1000000000 > 0.5)
         value = round_to(3, value / 1000000000) + " G";
-    else if (value / 1000000 > 0.5)
-        value = round_to(3, value / 1000000) + " M";
-    else if (value / 1000 > 0.5)
-        value = round_to(3, value / 1000) + " k";
-    else
-        value = round_to(3, value) + " ";
+    else if (value / 1000000 > 0.5) value = round_to(3, value / 1000000) + " M";
+    else if (value / 1000 > 0.5) value = round_to(3, value / 1000) + " k";
+    else value = round_to(3, value) + " ";
     return value + prefix;
 }
 
 function fetch_data(username) {
-    $.getJSON('https://magi.duinocoin.com/users/' +
-        encodeURIComponent(username),
-        function(data) {
+    $.getJSON(
+        "https://magi.duinocoin.com/users/" + encodeURIComponent(username),
+        function (data) {
             data = data.result;
             address = data.balance.address;
             balance = data.balance.balance;
-            staked_balance = round_to(4,data.balance.staked_balance);
+            staked_balance = round_to(4, data.balance.staked_balance);
             balanceusd = round_to(4, balance * data.price.max);
             update_element("username", `${data.balance.username}`);
             update_element("balance", `${balance} Σ`);
             update_element("staked_balance", `${staked_balance} Σ`);
             update_element("balanceusd", `≈ $${balanceusd}`);
-            update_element("price_ducoe", `≈ $${round_to(7, data.price.ducoexchange)}`)
-            update_element("price_pancake", `≈ $${round_to(7, data.price.pancakeswap)}`)
+            update_element(
+                "price_ducoe",
+                `≈ $${round_to(7, data.price.ducoexchange)}`
+            );
+            update_element(
+                "price_pancake",
+                `≈ $${round_to(7, data.price.pancakeswap)}`
+            );
+            update_element(
+                "price_yobit",
+                `≈ $${round_to(7, data.price.yobit)}`
+            );
             //update_element("price_btcpop", `≈ $${round_to(4, data.price.btcpop)}`)
             //update_element("price_moondex", `≈ $${round_to(4, data.price.moondex)}`)
 
             transactions_html = "";
-            data.transactions = data.transactions.reverse()
+            data.transactions = data.transactions.reverse();
 
             for (transaction in data.transactions) {
                 transaction = data.transactions[transaction];
                 if (transaction.memo === "none") transaction.memo = "";
                 else transaction.memo = `<i>"${transaction.memo}"</i>`;
 
-                if (transaction.recipient == username || transaction.recipient == address) {
+                if (
+                    transaction.recipient == username ||
+                    transaction.recipient == address
+                ) {
                     is_local = "";
                     if (transaction.sender) {
                         is_local = `
@@ -88,14 +104,16 @@ function fetch_data(username) {
                                     </span>
                                     <b>
                                         <monospace>${transaction.sender}</monospace>
-                                    </b>`
+                                    </b>`;
                     }
                     thtml = `
                             <div class="column is-full">
                                 <p class="title is-size-6 has-text-weight-normal">
                                     <i class="fa fa-arrow-left fa-fw has-text-success"></i>
                                     <span>
-                                        Received <b>${transaction.amount} XMG</b>
+                                        Received <b>${
+                                            transaction.amount
+                                        } XMG</b>
                                     </span>
                                     ${is_local}
                                     <span class="has-text-weight-normal">
@@ -106,8 +124,12 @@ function fetch_data(username) {
                                     <span>
                                         ${transaction.datetime}
                                     </span>
-                                    <a href="https://magi.duinocoin.com/?search=${transaction.hash}" target="_blank">
-                                        <monospace>${(transaction.hash.substr(transaction.hash.length - 16))}</monospace>
+                                    <a href="https://magi.duinocoin.com/?search=${
+                                        transaction.hash
+                                    }" target="_blank">
+                                        <monospace>${transaction.hash.substr(
+                                            transaction.hash.length - 16
+                                        )}</monospace>
                                     </a>
                                 </p>
                             </div>`;
@@ -123,7 +145,9 @@ function fetch_data(username) {
                                         to
                                     </span>
                                     <b>
-                                        <monospace>${transaction.recipient}</monospace>
+                                        <monospace>${
+                                            transaction.recipient
+                                        }</monospace>
                                     </b>
                                     <span class="has-text-weight-normal">
                                         ${transaction.memo}
@@ -133,57 +157,69 @@ function fetch_data(username) {
                                     <span>
                                         ${transaction.datetime}
                                     </span>
-                                    <a href="https://magi.duinocoin.com/?search=${transaction.hash}" target="_blank">
-                                        <monospace>${(transaction.hash.substr(transaction.hash.length - 16))}</monospace>
+                                    <a href="https://magi.duinocoin.com/?search=${
+                                        transaction.hash
+                                    }" target="_blank">
+                                        <monospace>${transaction.hash.substr(
+                                            transaction.hash.length - 16
+                                        )}</monospace>
                                     </a>
                                 </p>
                             </div>`;
-
                 }
                 transactions_html += thtml;
             }
             update_element("transactions", transactions_html);
-        }).fail(function() {
+        }
+    ).fail(function () {
         show_modal("Network error", "Error");
     });
 }
 
 function stakeinfo() {
-    $.getJSON('https://magi.duinocoin.com/statistics',
-        function(data) {
-            data = data.result;
-            update_element("stake_interest", round_to(4, data.stake_interest) + " Σ");
-            update_element("stake_hours", `~ ${data.hours_to_stake} hours`);
-        }).fail(function() {
-        console.log("Error getting stake info")
+    $.getJSON("https://magi.duinocoin.com/statistics", function (data) {
+        data = data.result;
+        update_element(
+            "stake_interest",
+            round_to(4, data.stake_interest) + " Σ"
+        );
+        update_element("stake_hours", `~ ${data.hours_to_stake} hours`);
+    }).fail(function () {
+        console.log("Error getting stake info");
     });
 }
 
 function login(username, password) {
-    $.getJSON('https://magi.duinocoin.com/auth/' +
-        encodeURIComponent(username) +
-        '?password=' +
-        encodeURIComponent(password),
-        function(data) {
+    $.getJSON(
+        "https://magi.duinocoin.com/auth/" +
+            encodeURIComponent(username) +
+            "?password=" +
+            encodeURIComponent(password),
+        function (data) {
             if (data.success == true) {
-                if ($('#remember').is(":checked")) {
+                if ($("#remember").is(":checked")) {
                     setcookie("password", password, 30);
                     setcookie("username", username, 30);
                 }
                 fetch_data(username);
                 stakeinfo();
-                setInterval(function() {
+                setInterval(function () {
                     fetch_data(username);
                 }, 15 * 1000);
                 $("#loginbutton").removeClass("is-loading");
-                $("#loginsection").fadeOut(function() {
-                    $("#balancediv").fadeIn(function() {
-                        $("#pricesdiv").fadeIn(function() {
-                            $("#transactionsdiv").fadeIn(function() {
-                                $("#newsdiv").fadeIn(function() {
-                                    $("#adsdiv").fadeIn(function() {
-                                        if (adBlockEnabled) $("#adblocker_detected").show()
-                                        else(adsbygoogle = window.adsbygoogle || []).push({});
+                $("#loginsection").fadeOut(function () {
+                    $("#balancediv").fadeIn(function () {
+                        $("#pricesdiv").fadeIn(function () {
+                            $("#transactionsdiv").fadeIn(function () {
+                                $("#newsdiv").fadeIn(function () {
+                                    $("#adsdiv").fadeIn(function () {
+                                        if (adBlockEnabled)
+                                            $("#adblocker_detected").show();
+                                        else
+                                            (adsbygoogle =
+                                                window.adsbygoogle || []).push(
+                                                {}
+                                            );
                                         $("#buttonsdiv").fadeIn();
                                     });
                                 });
@@ -195,23 +231,70 @@ function login(username, password) {
                 $("#loginbutton").removeClass("is-loading");
                 show_modal(data.message, "Error");
             }
-        }).fail(function() {
+        }
+    ).fail(function () {
         $("#loginbutton").removeClass("is-loading");
         show_modal("Network error", "Error");
     });
 }
 
 function show_modal(content, title) {
-    $('html').addClass('is-clipped');
-    $('#modal').addClass('is-active');
+    $("html").addClass("is-clipped");
+    $("#modal").addClass("is-active");
     $("#modal .modal-card-title").html(title);
     $("#modal-content").html(content);
 }
 
 function show_register_modal() {
-    $('html').addClass('is-clipped');
-    $('#register_modal').addClass('is-active');
-    $("#register_modal .modal-card-title").html("Register on Coin Magi network");
+    $("html").addClass("is-clipped");
+    $("#register_modal").addClass("is-active");
+    $("#register_modal .modal-card-title").html(
+        "Register on Coin Magi network"
+    );
+}
+
+function wrap_funds() {
+    address = $("#address").val();
+    amount = $("#wrap_amount").val();
+    console.log(address, amount);
+
+    if (address && amount) {
+        $("#wrapbutton").addClass("is-loading");
+        $.getJSON(
+            "https://magi.duinocoin.com/wrap/" +
+                "?username=" +
+                encodeURIComponent(username) +
+                "&password=" +
+                encodeURIComponent(password) +
+                "&address=" +
+                encodeURIComponent(address) +
+                "&amount=" +
+                encodeURIComponent(amount),
+            function (data) {
+                if (data.success == true) {
+                    $("html").removeClass("is-clipped");
+                    $("#modal").removeClass("is-active");
+                    $("#wrapbutton").removeClass("is-loading");
+                    show_modal(
+                        "Successfully wrapped XMG to WXMG" +
+                            `<br>TXID: <a href="https://bscscan.com/tx/${data.result}">
+                            <monospace>${data.result}</monospace></a>`,
+                        "Success"
+                    );
+                } else {
+                    $("html").removeClass("is-clipped");
+                    $("#modal").removeClass("is-active");
+                    $("#wrapbutton").removeClass("is-loading");
+                    show_modal(data.message, "Error");
+                }
+            }
+        ).fail(function () {
+            $("html").removeClass("is-clipped");
+            $("#modal").removeClass("is-active");
+            $("#wrapbutton").removeClass("is-loading");
+            show_modal("Network error", "Error");
+        });
+    }
 }
 
 function send_funds() {
@@ -221,29 +304,43 @@ function send_funds() {
     console.log(recipient, amount, memo);
     if (recipient && amount) {
         $("#sendbutton").addClass("is-loading");
-        $.getJSON('https://magi.duinocoin.com/transaction/' +
-            '?username=' + encodeURIComponent(username) +
-            '&password=' + encodeURIComponent(password) +
-            '&recipient=' + encodeURIComponent(recipient) +
-            '&amount=' + encodeURIComponent(amount) +
-            '&memo=' + encodeURIComponent(memo),
-            function(data) {
+        $.getJSON(
+            "https://magi.duinocoin.com/transaction/" +
+                "?username=" +
+                encodeURIComponent(username) +
+                "&password=" +
+                encodeURIComponent(password) +
+                "&recipient=" +
+                encodeURIComponent(recipient) +
+                "&amount=" +
+                encodeURIComponent(amount) +
+                "&memo=" +
+                encodeURIComponent(memo),
+            function (data) {
                 if (data.success == true) {
-                    $('html').removeClass('is-clipped');
-                    $('#modal').removeClass('is-active');
+                    $("html").removeClass("is-clipped");
+                    $("#modal").removeClass("is-active");
                     $("#sendbutton").removeClass("is-loading");
-                    show_modal("Successfully transferred funds" +
-                        `<br>TXID: <a href="https://magi.duinocoin.com/?search=${data.result.split(",")[2]}">
-                            <monospace>${data.result.split(",")[2]}</monospace></a>`, "Success");
+                    show_modal(
+                        "Successfully transferred funds" +
+                            `<br>TXID: <a href="https://magi.duinocoin.com/?search=${
+                                data.result.split(",")[2]
+                            }">
+                            <monospace>${
+                                data.result.split(",")[2]
+                            }</monospace></a>`,
+                        "Success"
+                    );
                 } else {
-                    $('html').removeClass('is-clipped');
-                    $('#modal').removeClass('is-active');
+                    $("html").removeClass("is-clipped");
+                    $("#modal").removeClass("is-active");
                     $("#sendbutton").removeClass("is-loading");
                     show_modal(data.message.split(",")[1], "Error");
                 }
-            }).fail(function() {
-            $('html').removeClass('is-clipped');
-            $('#modal').removeClass('is-active');
+            }
+        ).fail(function () {
+            $("html").removeClass("is-clipped");
+            $("#modal").removeClass("is-active");
             $("#sendbutton").removeClass("is-loading");
             show_modal("Network error", "Error");
         });
@@ -255,18 +352,17 @@ function setcookie(name, value, days) {
         var date = new Date();
         date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
         var expires = "; expires=" + date.toGMTString();
-    } else
-        var expires = "";
+    } else var expires = "";
     document.cookie = name + "=" + value + expires + ";path=/";
 }
 
 function getcookie(cname) {
     let name = cname + "=";
     let decodedCookie = decodeURIComponent(document.cookie);
-    let ca = decodedCookie.split(';');
+    let ca = decodedCookie.split(";");
     for (let i = 0; i < ca.length; i++) {
         let c = ca[i];
-        while (c.charAt(0) == ' ') {
+        while (c.charAt(0) == " ") {
             c = c.substring(1);
         }
         if (c.indexOf(name) == 0) {
@@ -277,7 +373,7 @@ function getcookie(cname) {
 }
 
 function delcookie(name) {
-    document.cookie = name + '=; Max-Age=-99999999;';
+    document.cookie = name + "=; Max-Age=-99999999;";
 }
 
 function logout() {
@@ -287,21 +383,23 @@ function logout() {
 }
 
 function setErrorFor(input, message) {
-    input.classList.add('is-danger');
+    input.classList.add("is-danger");
     const field = input.parentElement;
-    const small = field.querySelector('small');
+    const small = field.querySelector("small");
     small.innerText = message;
 }
 
 function setSuccessFor(input) {
-    input.classList.remove('is-danger');
+    input.classList.remove("is-danger");
     const field = input.parentElement;
-    const small = field.querySelector('small');
-    small.innerText = '';
+    const small = field.querySelector("small");
+    small.innerText = "";
 }
 
 function isEmail(email) {
-    return /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(email);
+    return /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
+        email
+    );
 }
 
 function checkInputs() {
@@ -312,35 +410,38 @@ function checkInputs() {
 
     let isFormValid = true;
 
-    if (usernameValue === '') {
-        setErrorFor(username, 'Username cannot be blank.');
+    if (usernameValue === "") {
+        setErrorFor(username, "Username cannot be blank.");
         isFormValid = false;
     } else {
         setSuccessFor(username);
     }
 
-    if (emailValue === '') {
-        setErrorFor(email, 'Email cannot be blank.');
+    if (emailValue === "") {
+        setErrorFor(email, "Email cannot be blank.");
         isFormValid = false;
     } else if (!isEmail(emailValue)) {
-        setErrorFor(email, 'Not a valid email.');
+        setErrorFor(email, "Not a valid email.");
         isFormValid = false;
     } else {
         setSuccessFor(email);
     }
 
-    if (passwordValue === '') {
-        setErrorFor(password, 'Password cannot be blank.');
+    if (passwordValue === "") {
+        setErrorFor(password, "Password cannot be blank.");
         isFormValid = false;
     } else {
         setSuccessFor(password);
     }
 
-    if (passwordConfirmValue === '') {
-        setErrorFor(passwordConfirm, 'Confirm password cannot be blank.');
+    if (passwordConfirmValue === "") {
+        setErrorFor(passwordConfirm, "Confirm password cannot be blank.");
         isFormValid = false;
     } else if (passwordValue !== passwordConfirmValue) {
-        setErrorFor(passwordConfirm, 'The password and confirmation password do not match.');
+        setErrorFor(
+            passwordConfirm,
+            "The password and confirmation password do not match."
+        );
         isFormValid = false;
     } else {
         setSuccessFor(passwordConfirm);
@@ -357,65 +458,76 @@ function checkInputs() {
 }
 
 function register() {
-    captchainfo = document.getElementById('captchainfo');
-    username = document.getElementById('username_regi');
-    email = document.getElementById('email_regi');
-    password = document.getElementById('password_regi');
-    passwordConfirm = document.getElementById('password_regi_conf');
+    captchainfo = document.getElementById("captchainfo");
+    username = document.getElementById("username_regi");
+    email = document.getElementById("email_regi");
+    password = document.getElementById("password_regi");
+    passwordConfirm = document.getElementById("password_regi_conf");
     captcha = grecaptcha.getResponse();
     if (checkInputs()) {
         $("#regibutton").addClass("is-loading");
-        $.getJSON('https://magi.duinocoin.com/register/' +
-            '?username=' + encodeURIComponent(username.value.trim()) +
-            '&password=' + encodeURIComponent(password.value) +
-            '&email=' + encodeURIComponent(email.value.trim()) +
-            '&captcha=' + encodeURIComponent(captcha),
-            function(data) {
+        $.getJSON(
+            "https://magi.duinocoin.com/register/" +
+                "?username=" +
+                encodeURIComponent(username.value.trim()) +
+                "&password=" +
+                encodeURIComponent(password.value) +
+                "&email=" +
+                encodeURIComponent(email.value.trim()) +
+                "&captcha=" +
+                encodeURIComponent(captcha),
+            function (data) {
                 if (data.success == true) {
-                    $('html').removeClass('is-clipped');
-                    $('#register_modal').removeClass('is-active');
+                    $("html").removeClass("is-clipped");
+                    $("#register_modal").removeClass("is-active");
                     $("#regibutton").removeClass("is-loading");
                     show_modal("Wallet successfully created", "Success");
                 } else {
-                    $('html').removeClass('is-clipped');
-                    $('#register_modal').removeClass('is-active');
+                    $("html").removeClass("is-clipped");
+                    $("#register_modal").removeClass("is-active");
                     $("#regibutton").removeClass("is-loading");
                     show_modal(data.message, "Error");
                 }
-            });
+            }
+        );
     } else {
         return false;
     }
 }
 
-window.addEventListener('load', function() {
-    (document.querySelectorAll('.notification .delete') || []).forEach(($delete) => {
-        const $notification = $delete.parentNode;
-        $delete.addEventListener('click', () => {
-            $($notification).fadeOut('slow');
-        });
-    });
+window.addEventListener("load", function () {
+    (document.querySelectorAll(".notification .delete") || []).forEach(
+        ($delete) => {
+            const $notification = $delete.parentNode;
+            $delete.addEventListener("click", () => {
+                $($notification).fadeOut("slow");
+            });
+        }
+    );
 
-    const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
-    $navbarBurgers.forEach(el => {
-        el.addEventListener('click', () => {
+    const $navbarBurgers = Array.prototype.slice.call(
+        document.querySelectorAll(".navbar-burger"),
+        0
+    );
+    $navbarBurgers.forEach((el) => {
+        el.addEventListener("click", () => {
             const target = el.dataset.target;
             const $target = document.getElementById(target);
-            el.classList.toggle('is-active');
-            $target.classList.toggle('is-active');
+            el.classList.toggle("is-active");
+            $target.classList.toggle("is-active");
         });
     });
 
-    $("#loginbutton").click(function() {
+    $("#loginbutton").click(function () {
         if ($("#usernameinput").val() && $("#passwordinput").val()) {
-            $("#loginbutton").addClass("is-loading")
+            $("#loginbutton").addClass("is-loading");
             username = $("#usernameinput").val();
             password = $("#passwordinput").val();
             login(username, password);
         }
     });
 
-    $("#receive").click(function() {
+    $("#receive").click(function () {
         finalstring = `
             <p class="heading">
                 Your XMG <b>wallet address</b>
@@ -429,11 +541,11 @@ window.addEventListener('load', function() {
             <p class="title is-size-5">
                 <monospace>${username}</monospace>
             </p>
-        `
+        `;
         show_modal(finalstring, "Receive Magi");
     });
 
-    $("#send").click(function() {
+    $("#send").click(function () {
         finalstring = `
             <div class="columns is-multiline">
                 <div class="column is-full">
@@ -454,27 +566,61 @@ window.addEventListener('load', function() {
                     </button>
                 </div>
             </div>
-        `
+        `;
         show_modal(finalstring, "Send Magi");
     });
 
-    document.querySelector('#modal .delete').onclick = function() {
-        $('html').removeClass('is-clipped');
-        $('#modal').removeClass('is-active');
-    }
+    $("#wrap").click(function () {
+        finalstring = `
+            <div class="columns is-multiline">
+                <div class="column is-full">
+                    <i class="fa fa-info-circle"></i>
+                    <b>Operated by <a target="_blank" href="https://wrap.magibridge.com">wrap.magibridge.com</a></b><br>
+                    <span>
+                        <details>
+                            <summary class="has-text-info" style="cursor:pointer">Token info</summary>
+                            Token address: <b><span class="monospace">0xeC159cd31964d7E64225F52757d0055f0beEA5c8</span></b><br>
+                            Decimals: <b>8</b><br>
+                            Symbol: <b>WXMG</b><br>
+                            Network: <b>Binance Smart Chain</b>
+                        </details>
+                    </span>
+                </div>
+                <div class="column is-full">
+                    <span class="heading">BSC address</span>
+                    <input class="input" id="address" placeholder="e.g. 0x73557EBb936E4400ec3e7F0Cc20da82db45D9467" type="text">
+                </div>
+                <div class="column is-full">
+                    <span class="heading">Amount (<span class="has-text-warning-dark">Note: a 0.005 XMG transaction fee will apply</span>) <small>(min. 100 XMG)</small> </span>
+                    <input class="input" id="wrap_amount" placeholder="e.g. 2115" type="number" step="0.1" min="5">
+                </div>
+                <div class="column is-full">
+                    <button class="button is-fullwidth" id="wrapbutton" onclick="wrap_funds()">
+                        Wrap XMG to WXMG
+                    </button>
+                </div>
+            </div>
+        `;
+        show_modal(finalstring, "Wrap Magi to WXMG");
+    });
 
-    document.querySelector('#register_modal .delete').onclick = function() {
-        $('html').removeClass('is-clipped');
-        $('#register_modal').removeClass('is-active');
-    }
+    document.querySelector("#modal .delete").onclick = function () {
+        $("html").removeClass("is-clipped");
+        $("#modal").removeClass("is-active");
+    };
+
+    document.querySelector("#register_modal .delete").onclick = function () {
+        $("html").removeClass("is-clipped");
+        $("#register_modal").removeClass("is-active");
+    };
 
     if (getcookie("password") && getcookie("username")) {
-        $('#usernameinput').val(getcookie("username"));
-        $('#passwordinput').val(getcookie("password"));
-        $('#loginbutton').click();
+        $("#usernameinput").val(getcookie("username"));
+        $("#passwordinput").val(getcookie("password"));
+        $("#loginbutton").click();
     }
 
-    window.setTimeout(function() {
-        $("#loader-wrapper").fadeOut('slow');
+    window.setTimeout(function () {
+        $("#loader-wrapper").fadeOut("slow");
     }, 200);
 });
