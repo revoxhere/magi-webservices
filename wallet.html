@@ -73,6 +73,10 @@
                 </a>
             </div>
             <div class="navbar-end">
+                <a class="navbar-item" href="https://store.duinocoin.com">
+                    <i class="fa fa-shopping-bag"></i>&nbsp;
+                    Merch
+                </a>
                 <a class="navbar-item" href="/faucet.html">
                     <i class="fa fa-faucet"></i>&nbsp;
                     Faucet
@@ -154,16 +158,26 @@
                                     ≈ $0
                                 </p>
                             </div>
-                            <div class="column" style="bottom:0">
-                                <div class="columns">
-                                    <div class="column">
-                                        <button class="button is-fullwidth mb-3" id="send">
+                            <div class="column" style="margin-top: auto;">
+                                <div class="columns is-multiline" style="margin-top: auto;">
+                                    <div class="column" style="margin-top: auto;">
+                                        <button class="button is-fullwidth" id="send">
                                             Send
                                         </button>
                                     </div>
-                                    <div class="column">
+                                    <div class="column" style="margin-top: auto;">
                                         <button class="button is-fullwidth" id="receive">
                                             Receive
+                                        </button>
+                                    </div>
+                                    <div class="column" style="margin-top: auto;">
+                                        <button class="button is-fullwidth" id="wrap">
+                                            Wrap
+                                        </button>
+                                    </div>
+                                    <div class="column" style="margin-top: auto;">
+                                        <button disabled data-tooltip="Coming soon" class="button is-fullwidth" id="unwrap">
+                                            Unwrap
                                         </button>
                                     </div>
                                 </div>
@@ -193,12 +207,23 @@
                                     ?
                                 </p>
                                 <p class="subtitle is-size-7">
-                                    <img class="icon icon-text is-small" src="images/pancake.png">
-                                    <a href="https://nomics.com/exchanges/pancakeswapv2-pancakeswap-v2/markets/0x16aea53c11a64cf0aee7e0ca493e1573c9a4ac9c">
-                                        <b>Pancake Swap</b> (bscXMG)
+                                    <img class="icon icon-text is-small" src="images/wxmg.png">
+                                    <a href="https://pancakeswap.finance/swap?outputCurrency=0xeC159cd31964d7E64225F52757d0055f0beEA5c8">
+                                        <b>Pancake Swap</b> (WXMG)
                                     </a>
                                 </p>
                             </div>
+                            <!--<div class="column">
+                                <p class="title is-size-6" id="price_yobit">
+                                    ?
+                                </p>
+                                <p class="subtitle is-size-7">
+                                    <img class="icon icon-text is-small" src="images/yobit.png">
+                                    <a href="https://yobit.net/en/trade/XMG/BTC">
+                                        <b>YoBit</b> (XMG)
+                                    </a>
+                                </p>
+                            </div>-->
                             <!--<div class="column">
                                     <p class="title is-size-6" id="price_btcpop">
                                         ?
